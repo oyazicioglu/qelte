@@ -1,0 +1,52 @@
+$darkThemeColors: (
+	'background': rgb(48, 48, 48),
+	'paper': rgb(66, 66, 66),
+	'status': rgb(0, 0, 0),
+	'app': rgb(33, 33, 33),
+	'primaryText': rgba(255, 255, 255, 1),
+	'secondaryText': rgba(255, 255, 255, 0.7),
+	'disabledText': rgba(255, 255, 255, 0.5),
+	'divider': rgba(255, 255, 255, 0.08),
+	'activeIcon': rgba(255, 255, 255, 0.54),
+	'inactiveIcon': rgba(255, 255, 255, 0.38),
+	'disabled': rgb(170, 170, 170),
+	'hover': rgba(0, 0, 0, 0.3),
+	'click': rgba(255, 255, 255, 0.35),
+	'stroke': rgba(255, 255, 255, 0.2),
+	'oddRow': rgba(255, 255, 255, 0.05),
+);
+
+$lightThemeColors: (
+	'background': rgb(248, 248, 248),
+	'paper': rgb(255, 255, 255),
+	'status': rgb(245, 245, 245),
+	'app': rgb(224, 224, 224),
+	'primaryText': rgba(0, 0, 0, 0.87),
+	'secondaryText': rgba(0, 0, 0, 0.54),
+	'disabledText': rgba(0, 0, 0, 0.38),
+	'divider': rgba(0, 0, 0, 0.12),
+	'activeIcon': rgba(0, 0, 0, 0.87),
+	'inactiveIcon': rgba(0, 0, 0, 0.5),
+	'disabled': rgb(220, 220, 220),
+	'hover': rgba(0, 0, 0, 0.15),
+	'click': rgba(0, 0, 0, 0.25),
+	'stroke': rgba(0, 0, 0, 0.2),
+	'oddRow': rgba(0, 0, 0, 0.03),
+);
+
+$alertColors: (
+	'success': rgb(31, 173, 114),
+	'danger': rgb(190, 48, 79),
+	'warning': rgb(199, 149, 40),
+	'info': rgb(24, 130, 184),
+);
+
+$primaryColors: (
+	'bg': rgb(33, 150, 243),
+	'fg': hsl(0, 0%, 100%),
+);
+
+$accentColors: (
+	'bg': rgb(212, 65, 134),
+	'fg': hsl(0, 0%, 100%),
+);

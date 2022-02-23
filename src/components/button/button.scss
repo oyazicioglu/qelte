@@ -1,0 +1,101 @@
+@use '../styles/theme/theme';
+@use './mixins';
+
+.qei-button {
+	position: relative;
+	overflow: hidden;
+
+	.hover {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		transition: all 300ms ease-in-out;
+		z-index: 0;
+		background-color: transparent;
+		display: grid;
+		grid-auto-flow: column;
+		align-items: center;
+		min-width: fit-content;
+	}
+
+	&.no-wrap {
+		white-space: nowrap;
+		.qei-span {
+			white-space: nowrap;
+		}
+	}
+
+	&:not(:disabled).color-inherit {
+		color: inherit !important;
+	}
+
+	&.fullWidth {
+		width: 100%;
+	}
+
+	&:not(:disabled):hover > .hover {
+		background-color: map-get($map: theme.$themeColors, $key: 'hover');
+	}
+
+	&.type-basic {
+		@include mixins.basic();
+	}
+
+	&.type-flat {
+		@include mixins.flat();
+	}
+
+	&.type-stroked {
+		@include mixins.stroked();
+	}
+
+	&.type-raised {
+		@include mixins.raised();
+	}
+
+	&:disabled {
+		cursor: default;
+	}
+
+	&.size-extra-small {
+		@include mixins.elementSize('extra-small');
+	}
+
+	&.size-small {
+		@include mixins.elementSize('small');
+	}
+
+	&.size-default {
+		@include mixins.elementSize('default');
+	}
+
+	&.size-large {
+		@include mixins.elementSize('large');
+	}
+
+	&.size-extra-large {
+		@include mixins.elementSize('extra-large');
+	}
+
+	&.rounded.size-extra-small {
+		@include mixins.round('extra-small');
+	}
+
+	&.rounded.size-small {
+		@include mixins.round('small');
+	}
+
+	&.rounded.size-default {
+		@include mixins.round('default');
+	}
+
+	&.rounded.size-large {
+		@include mixins.round('large');
+	}
+
+	&.rounded.size-extra-large {
+		@include mixins.round('extra-large');
+	}
+}

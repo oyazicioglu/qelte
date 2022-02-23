@@ -1,0 +1,96 @@
+@use './theme';
+@use './variables' as baseVariables;
+
+@mixin textColors {
+	color: inherit;
+
+	&:not(.disabled).color-inherit {
+		color: inherit;
+	}
+
+	&:not(.disabled).color-default {
+		color: map-get($map: theme.$themeColors, $key: 'primaryText');
+	}
+
+	&:not(.disabled).color-secondary {
+		color: map-get($map: theme.$themeColors, $key: 'secondaryText');
+	}
+
+	&:not(.disabled).color-primary {
+		color: map-get($map: theme.$primaryColors, $key: 'bg');
+	}
+
+	&:not(.disabled).color-accent {
+		color: map-get($map: theme.$accentColors, $key: 'bg');
+	}
+
+	&:not(.disabled).color-warning {
+		color: map-get($map: theme.$alertColors, $key: 'warning');
+	}
+
+	&:not(.disabled).color-success {
+		color: map-get($map: theme.$alertColors, $key: 'success');
+	}
+
+	&:not(.disabled).color-info {
+		color: map-get($map: theme.$alertColors, $key: 'info');
+	}
+
+	&:not(.disabled).color-danger {
+		color: map-get($map: theme.$alertColors, $key: 'danger');
+	}
+
+	&.disabled {
+		color: map-get($map: theme.$themeColors, $key: 'disabledText');
+	}
+}
+
+@mixin textAlign {
+	&.align-start {
+		text-align: left;
+	}
+
+	&.align-center {
+		text-align: center;
+	}
+
+	&.align-end {
+		text-align: right;
+	}
+
+	&.align-stretched {
+		text-align: justify;
+	}
+}
+
+@mixin textSize {
+	&.size-extra-small {
+		font-size: baseVariables.$extraSmallFontSize;
+	}
+
+	&.size-small {
+		font-size: baseVariables.$smallFontSize;
+	}
+
+	&.size-default {
+		font-size: baseVariables.$defaultFontSize;
+	}
+
+	&.size-large {
+		font-size: baseVariables.$largeFontSize;
+	}
+
+	&.size-extra-large {
+		font-size: baseVariables.$extraLargeFontSize;
+	}
+}
+
+@mixin textStyle {
+	&.bold {
+		font-weight: bold;
+	}
+
+	&.italic {
+		font-style: italic;
+	}
+}

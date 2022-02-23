@@ -1,0 +1,43 @@
+@use './theme';
+
+@mixin backgroundColors {
+	&:not(:disabled).color-default {
+		background-color: map-get($map: theme.$themeColors, $key: 'paper');
+		color: map-get($map: theme.$themeColors, $key: 'primaryText');
+	}
+
+	&:not(:disabled).color-primary {
+		background-color: map-get($map: theme.$primaryColors, $key: 'bg');
+		color: map-get($map: theme.$primaryColors, $key: 'fg');
+	}
+
+	&:not(:disabled).color-accent {
+		background-color: map-get($map: theme.$accentColors, $key: 'bg');
+		color: map-get($map: theme.$accentColors, $key: 'fg');
+	}
+
+	&:not(:disabled).color-warning {
+		background-color: map-get($map: theme.$alertColors, $key: 'warning');
+		color: white;
+	}
+
+	&:not(:disabled).color-success {
+		background-color: map-get($map: theme.$alertColors, $key: 'success');
+		color: white;
+	}
+
+	&:not(:disabled).color-info {
+		background-color: map-get($map: theme.$alertColors, $key: 'info');
+		color: white;
+	}
+
+	&:not(:disabled).color-danger {
+		background-color: map-get($map: theme.$alertColors, $key: 'danger');
+		color: white;
+	}
+
+	&:disabled {
+		background-color: map-get($map: theme.$themeColors, $key: 'disabled');
+		color: map-get($map: theme.$themeColors, $key: 'disabledText');
+	}
+}

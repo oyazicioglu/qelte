@@ -1,0 +1,42 @@
+@use '../styles/theme/theme';
+@use './mixins';
+
+.qei-combobox {
+	position: relative;
+	background-color: transparent;
+
+	.list-container {
+		visibility: hidden;
+		position: absolute;
+		min-width: 100%;
+		z-index: 10;
+
+		&.showList {
+			visibility: visible;
+		}
+	}
+
+	&.rounded.size-extra-small {
+		@include mixins.round('extra-small');
+	}
+
+	&.rounded.size-small {
+		@include mixins.round('small');
+	}
+
+	&.rounded.size-default {
+		@include mixins.round('default');
+	}
+
+	&.rounded.size-large {
+		@include mixins.round('large');
+	}
+
+	&.rounded.size-extra-large {
+		@include mixins.round('extra-large');
+	}
+
+	.qei-text .qei-icon {
+		transition: all 300ms ease-in-out;
+	}
+}

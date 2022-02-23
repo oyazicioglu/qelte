@@ -1,0 +1,23 @@
+@use '../styles/theme/typography';
+
+.qei-text {
+	color: inherit;
+	background-color: transparent;
+	font-size: inherit;
+	box-sizing: border-box;
+	min-width: fit-content;
+
+	&.disabled {
+		user-select: none;
+		cursor: default;
+	}
+
+	&.no-wrap {
+		white-space: nowrap;
+	}
+
+	@include typography.textColors();
+	@include typography.textAlign();
+	@include typography.textSize();
+	@include typography.textStyle();
+}

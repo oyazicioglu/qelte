@@ -1,0 +1,27 @@
+@use "./functions";
+
+$extraSmallHeight: 20;
+$smallHeight: 24;
+$defaultHeight: 30;
+$largeHeight: 38;
+$extraLargeHeight: 44;
+
+$extraSmallFontSize: functions.pixelToRem(10);
+$smallFontSize: functions.pixelToRem(12);
+$defaultFontSize: functions.pixelToRem(14);
+$largeFontSize: functions.pixelToRem(16);
+$extraLargeFontSize: functions.pixelToRem(18);
+
+$extraSmallPadding: 2px 4px;
+$smallPadding: 4px 8px;
+$defaultPadding: 6px 12px;
+$largePadding: 8px 16px;
+$extraLargePadding: 10px 20px;
+
+$extraSmallRound: 4px;
+$smallRound: 6px;
+$defaultRound: 8px;
+$largeRound: 10px;
+$extraLargeRound: 12px;
+
+$columnCount: 12;

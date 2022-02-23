@@ -1,0 +1,19 @@
+@use '../styles/theme/theme';
+
+.qei-table-cell {
+    cursor: pointer;
+
+    padding: 6px 12px;
+
+    &.align-left {
+        text-align: left;
+    }
+
+    &.align-center {
+        text-align: center;
+    }
+
+    &.align-right {
+        text-align: right;
+    }
+}

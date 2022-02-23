@@ -1,0 +1,28 @@
+@use '../styles/theme/theme';
+
+.qei-table-row {
+    display: table-row;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+    height: 36px;
+    background-color: map-get($map: theme.$themeColors, $key: 'background');
+
+    &:hover,
+    &.stripped.odd-row:hover {
+        background-color: map-get($map: theme.$themeColors, $key: 'hover');
+    }
+
+    &.condense {
+        height: 24px;
+    }
+
+    &.stripped.odd-row {
+        background-color: map-get($map: theme.$themeColors, $key: 'oddRow');
+    }
+
+    &.hasDivider {
+        .qei-table-cell {
+            border-bottom: 1px solid map-get($map: theme.$themeColors, $key: 'divider');
+        }
+    }
+}

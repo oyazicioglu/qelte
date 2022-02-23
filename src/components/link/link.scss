@@ -1,0 +1,123 @@
+@use '../styles/theme/theme';
+
+.qei-link {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	position: relative;
+	width: fit-content;
+
+	.underline {
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		right: 0;
+		width: 0;
+		height: 1px;
+		transition: all 200ms ease-in-out;
+		background-color: map-get($map: theme.$themeColors, $key: 'primaryText');
+	}
+
+	&:hover {
+		.underline {
+			width: 100%;
+		}
+	}
+
+	a,
+	a:visited,
+	a:hover {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	color: inherit;
+	text-decoration: none;
+	transition: all 200ms ease-in-out;
+
+	&.disabled {
+		color: map-get($map: theme.$themeColors, $key: 'disabledText');
+		pointer-events: none;
+		.underline {
+			background-color: map-get($map: theme.$themeColors, $key: 'disabledText');
+		}
+	}
+
+	&:not(.disabled).active:not(.color-primary) {
+		color: map-get($map: theme.$themeColors, $key: 'primaryText');
+		.underline {
+			background-color: map-get($map: theme.$themeColors, $key: 'primaryText');
+		}
+	}
+
+	&:not(.disabled).active.color-default {
+		color: map-get($map: theme.$primaryColors, $key: 'bg');
+		.underline {
+			background-color: map-get($map: theme.$primaryColors, $key: 'bg');
+		}
+	}
+
+	&:not(.disabled).active:not(.color-default):not(.color-primary) {
+		color: map-get($map: theme.$primaryColors, $key: 'primaryText');
+		.underline {
+			background-color: map-get($map: theme.$primaryColors, $key: 'primaryText');
+		}
+	}
+
+	&:not(.disabled).color-default {
+		color: map-get($map: theme.$themeColors, $key: 'primaryText');
+		.underline {
+			background-color: map-get($map: theme.$themeColors, $key: 'primaryText');
+		}
+	}
+
+	&:not(.disabled).color-primary {
+		color: map-get($map: theme.$primaryColors, $key: 'bg');
+		.underline {
+			background-color: map-get($map: theme.$primaryColors, $key: 'bg');
+		}
+	}
+
+	&:not(.disabled).color-secondary {
+		color: map-get($map: theme.$themeColors, $key: 'secondaryText');
+		.underline {
+			background-color: map-get($map: theme.$themeColors, $key: 'secondaryText');
+		}
+	}
+
+	&:not(.disabled).color-accent {
+		color: map-get($map: theme.$accentColors, $key: 'bg');
+		.underline {
+			background-color: map-get($map: theme.$accentColors, $key: 'bg');
+		}
+	}
+
+	&:not(.disabled).color-warning {
+		color: map-get($map: theme.$alertColors, $key: 'warning');
+		.underline {
+			background-color: map-get($map: theme.$alertColors, $key: 'warning');
+		}
+	}
+
+	&:not(.disabled).color-success {
+		color: map-get($map: theme.$alertColors, $key: 'success');
+		.underline {
+			background-color: map-get($map: theme.$alertColors, $key: 'success');
+		}
+	}
+
+	&:not(.disabled).color-info {
+		color: map-get($map: theme.$alertColors, $key: 'info');
+		.underline {
+			background-color: map-get($map: theme.$alertColors, $key: 'info');
+		}
+	}
+
+	&:not(.disabled).color-danger {
+		color: map-get($map: theme.$alertColors, $key: 'danger');
+		.underline {
+			background-color: map-get($map: theme.$alertColors, $key: 'danger');
+		}
+	}
+}

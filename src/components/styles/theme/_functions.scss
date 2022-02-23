@@ -1,0 +1,23 @@
+@use 'sass:color';
+@use 'sass:math';
+@use './colors';
+
+@function getThemeColors($themeType) {
+	@if $themeType == 'dark' {
+		@return colors.$darkThemeColors;
+	} @else {
+		@return colors.$lightThemeColors;
+	}
+}
+
+@function getAlertColors() {
+	@return colors.$alertColors;
+}
+
+@function pixelToRem($pixelSize) {
+	@return #{0.0625 * $pixelSize}rem;
+}
+
+@function RemToPixel($remSize) {
+	@return #{math.div($remSize, 0.0625)};
+}

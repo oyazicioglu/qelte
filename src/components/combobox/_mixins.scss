@@ -1,0 +1,61 @@
+@use "sass:math";
+@use "../styles/theme/variables" as themeVariables;
+
+@mixin round($size) {
+    @if $size == 'extra-small' {
+        border-top-left-radius: themeVariables.$extraSmallRound;
+        border-top-right-radius: themeVariables.$extraSmallRound;
+    } @else if $size == 'small' {
+        border-top-left-radius: themeVariables.$smallRound;
+        border-top-right-radius: themeVariables.$smallRound;
+    } @else if($size == 'default') {
+        border-top-left-radius: themeVariables.$defaultRound;
+        border-top-right-radius: themeVariables.$defaultRound;
+    } @else if($size == 'large') {
+        border-top-left-radius: themeVariables.$largeRound;
+        border-top-right-radius: themeVariables.$largeRound;
+    } @else if($size == 'extra-large') {
+        border-top-left-radius: themeVariables.$extraLargeRound;
+        border-top-right-radius: themeVariables.$extraLargeRound;
+    }
+}
+
+@mixin selectedItemLabel($size) {
+    @if $size == 'extra-small' {
+        margin-top: #{math.div(themeVariables.$extraSmallHeight, 2) * -1}px;
+        font-size: 8px;
+    } @else if $size == 'small' {
+        font-size: 10px;
+        margin-top: #{math.div(themeVariables.$smallHeight, 2) * -1}px;
+    } @else if($size == 'default') {
+        font-size: 12px;
+        margin-top: #{math.div(themeVariables.$defaultHeight, 2) * -1}px;
+    } @else if($size == 'large') {
+        font-size: 14px;
+        margin-top: #{math.div(themeVariables.$largeHeight, 2) * -1}px;
+    } @else if($size == 'extra-large') {
+        font-size: 16px;
+        margin-top: #{math.div(themeVariables.$extraLargeHeight, 2) * -1}px;
+    }
+}
+
+@mixin unselectedItemLabel($size) {
+    opacity: 0;
+    pointer-events: none;
+    @if $size == 'extra-small' {
+        font-size: 10px;
+        margin-top: #{math.div(themeVariables.$extraSmallHeight, 2)}px;
+    } @else if $size == 'small' {
+        font-size: 12px;
+        margin-top: #{math.div(themeVariables.$smallHeight, 2)}px;
+    } @else if($size == 'default') {
+        font-size: 14px;
+        margin-top: #{math.div(themeVariables.$defaultHeight, 2)}px;
+    } @else if($size == 'large') {
+        font-size: 16px;
+        margin-top: #{math.div(themeVariables.$largeHeight, 2)}px;
+    } @else if($size == 'extra-large') {
+        font-size: 18px;
+        margin-top: #{math.div(themeVariables.$extraLargeHeight, 2)};
+    }
+}

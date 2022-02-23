@@ -1,0 +1,32 @@
+@use 'sass:math';
+@use '../styles/theme/theme';
+@use '../styles/theme/variables' as globalVariables;
+@use '../text-input/mixins';
+
+.qei-search-input {
+    @include mixins.default();
+    @include mixins.inputDefault();
+    @include mixins.rounded();
+
+    &.size-extra-small {
+        @include mixins.sizeExtraSmall();
+    }
+
+    &.size-small {
+        @include mixins.sizeSmall();
+    }
+
+    &.size-default {
+        @include mixins.sizeDefault();
+    }
+
+    &.size-large {
+        @include mixins.sizeLarge();
+    }
+
+    &.size-extra-large {
+        @include mixins.sizeExtraLarge();
+    }
+
+    @include mixins.validation();
+}

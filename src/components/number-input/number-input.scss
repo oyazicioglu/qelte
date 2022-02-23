@@ -1,0 +1,58 @@
+@use "sass:math";
+@use "../styles/theme/theme";
+@use "../styles/theme/variables" as globalVariables;
+
+@use "../text-input/mixins";
+
+.qei-number-input {
+    @include mixins.default();
+    @include mixins.inputDefault();
+    @include mixins.rounded();
+
+    input[type='number'] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+        margin: 0;
+    }
+
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number']::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &:not(.disabled).invalid {
+        input {
+            color: map-get($map: theme.$alertColors, $key: 'danger')
+        }
+    }
+
+    &.size-extra-small {
+        @include mixins.sizeExtraSmall();
+    }
+
+    &.size-small {
+        @include mixins.sizeSmall();
+    }
+
+    &.size-default {
+        @include mixins.sizeDefault();
+    }
+
+    &.size-large {
+        @include mixins.sizeLarge();
+    }
+
+    &.size-extra-large {
+        @include mixins.sizeExtraLarge();
+    }
+
+    &:not(.disabled).invalid {
+        .colorable-icons,
+        .qei-icon-button.colorable-icons > .qei-icon {
+            color: map-get($map: theme.$alertColors, $key: 'danger') !important;
+        }
+    }
+
+    @include mixins.validation();
+}

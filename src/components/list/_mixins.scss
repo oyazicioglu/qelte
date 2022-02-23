@@ -1,0 +1,45 @@
+@use '../styles/theme/theme';
+@use '../styles/theme/mixins' as globalMixins;
+@use '../styles/theme/variables' as themeVariables;
+
+@mixin default {
+	position: relative;
+	line-height: 1;
+	border: 1px solid transparent;
+}
+
+@mixin round($size) {
+	@if $size == 'extra-small' {
+		border-radius: themeVariables.$extraSmallRound;
+	} @else if $size == 'small' {
+		border-radius: themeVariables.$smallRound;
+	} @else if($size == 'default') {
+		border-radius: themeVariables.$defaultRound;
+	} @else if($size == 'large') {
+		border-radius: themeVariables.$largeRound;
+	} @else if($size == 'extra-large') {
+		border-radius: themeVariables.$extraLargeRound;
+	}
+}
+
+@mixin basic() {
+	@include default();
+	background: transparent;
+	color: map-get($map: theme.$themeColors, $key: 'primaryText');
+}
+
+@mixin flat() {
+	@include default();
+	color: map-get($map: theme.$themeColors, $key: 'primaryText');
+	background-color: map-get($map: theme.$themeColors, $key: 'paper');
+}
+
+@mixin raised() {
+	@include flat();
+	@include globalMixins.elevations(3);
+}
+
+@mixin stroked() {
+	@include basic();
+	border: 1px solid map-get($map: theme.$themeColors, $key: 'stroke');
+}

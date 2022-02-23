@@ -1,0 +1,15 @@
+.qei-chekcbox {
+	cursor: pointer;
+
+	.qei-icon {
+		cursor: pointer;
+	}
+
+	&.disabled {
+		cursor: default;
+	}
+
+	.qei-text {
+		user-select: none;
+	}
+}

@@ -1,0 +1,22 @@
+@use '../styles/theme/typography';
+
+.qei-icon {
+	color: inherit;
+	position: relative;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	position: relative;
+	border: none;
+	outline: none;
+	line-height: 0;
+	font-size: inherit;
+	cursor: default;
+
+	@include typography.textColors();
+	@include typography.textSize();
+
+	&:disabled {
+		cursor: default;
+	}
+}

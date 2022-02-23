@@ -1,0 +1,134 @@
+@use '../styles/theme/theme';
+
+.qei-spinner {
+	position: relative;
+	color: inherit;
+
+	&.size-extra-small {
+		width: 14px;
+		height: 14px;
+		.loader {
+			border-width: 1px;
+		}
+	}
+
+	&.size-small {
+		width: 20px;
+		height: 20px;
+		.loader {
+			border-width: 1px;
+		}
+	}
+
+	&.size-default {
+		width: 24px;
+		height: 24px;
+		.loader {
+			border-width: 2px;
+		}
+	}
+
+	&.size-large {
+		width: 32px;
+		height: 32px;
+		.loader {
+			border-width: 4px;
+		}
+	}
+
+	&.size-extra-large {
+		width: 60px;
+		height: 60px;
+		.loader {
+			border-width: 6px;
+		}
+	}
+
+	&.color-default {
+		.loader {
+			border-left-color: map-get($map: theme.$themeColors, $key: 'primaryText');
+		}
+	}
+
+	&.color-primary {
+		.loader {
+			border-left-color: map-get($map: theme.$primaryColors, $key: 'bg');
+		}
+	}
+
+	&.color-accent {
+		.loader {
+			border-left-color: map-get($map: theme.$accentColors, $key: 'bg');
+		}
+	}
+
+	&.color-warning {
+		.loader {
+			border-left-color: map-get($map: theme.$alertColors, $key: 'warning');
+		}
+	}
+
+	&.color-success {
+		.loader {
+			border-left-color: map-get($map: theme.$alertColors, $key: 'success');
+		}
+	}
+
+	&.color-info {
+		.loader {
+			border-left-color: map-get($map: theme.$alertColors, $key: 'info');
+		}
+	}
+
+	&.color-danger {
+		.loader {
+			border-left-color: map-get($map: theme.$alertColors, $key: 'danger');
+		}
+	}
+
+	.loader,
+	.loader:after {
+		border-radius: 50%;
+	}
+
+	.loader {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		border-style: solid;
+		border-width: 1px;
+		border-top-color: map-get($map: theme.$themeColors, $key: 'divider');
+		border-right-color: map-get($map: theme.$themeColors, $key: 'divider');
+		border-bottom-color: map-get($map: theme.$themeColors, $key: 'divider');
+		border-left-color: map-get($map: theme.$themeColors, $key: 'primaryText');
+		-webkit-transform: translateZ(0);
+		-ms-transform: translateZ(0);
+		transform: translateZ(0);
+		-webkit-animation: load8 1s infinite linear;
+		animation: load8 1s infinite linear;
+	}
+
+	@-webkit-keyframes load8 {
+		0% {
+			-webkit-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+		100% {
+			-webkit-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+	}
+	@keyframes load8 {
+		0% {
+			-webkit-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+		100% {
+			-webkit-transform: rotate(360deg);
+			transform: rotate(360deg);
+		}
+	}
+}

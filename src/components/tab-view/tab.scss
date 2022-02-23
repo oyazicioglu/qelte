@@ -1,0 +1,40 @@
+@use '../styles/theme/variables';
+
+.qei-tab {
+	position: relative;
+
+	&.rounded.size-extra-small {
+		.headers .qei-button {
+			border-top-left-radius: variables.$extraSmallRound;
+			border-top-right-radius: variables.$extraSmallRound;
+		}
+	}
+
+	&.rounded.size-small {
+		.headers .qei-button {
+			border-top-left-radius: variables.$smallRound;
+			border-top-right-radius: variables.$smallRound;
+		}
+	}
+
+	&.rounded.size-default {
+		.headers .qei-button {
+			border-top-left-radius: variables.$defaultRound;
+			border-top-right-radius: variables.$defaultRound;
+		}
+	}
+
+	&.rounded.size-large {
+		.headers .qei-button {
+			border-top-left-radius: variables.$largeRound;
+			border-top-right-radius: variables.$largeRound;
+		}
+	}
+
+	&.rounded.size-extra-large {
+		.headers .qei-button {
+			border-top-left-radius: variables.$extraLargeRound;
+			border-top-right-radius: variables.$extraLargeRound;
+		}
+	}
+}

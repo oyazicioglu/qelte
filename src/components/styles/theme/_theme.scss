@@ -1,0 +1,8 @@
+@use "./colors";
+@use "./functions";
+
+$themeType: 'light' !default;
+$primaryColors: colors.$primaryColors !default;
+$accentColors: colors.$accentColors !default;
+$themeColors: functions.getThemeColors($themeType);
+$alertColors: functions.getAlertColors();

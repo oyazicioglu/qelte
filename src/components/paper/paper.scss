@@ -1,0 +1,21 @@
+@use '../styles/theme/theme';
+@use '../styles/theme/mixins';
+@use '../styles/theme/component-colors';
+
+.qei-paper {
+	position: relative;
+	height: 100%;
+	display: block;
+
+	&.rounded {
+		border-radius: 6px;
+	}
+
+	@include component-colors.backgroundColors();
+
+	@for $i from 0 through 10 {
+		&.elevation-#{$i} {
+			@include mixins.elevations($i);
+		}
+	}
+}

@@ -1,0 +1,13 @@
+@use "../styles/theme/variables";
+
+$extraSmallPadding: variables.$extraSmallPadding;
+$smallPadding: variables.$smallPadding;
+$defaultPadding: variables.$defaultPadding;
+$largePadding: variables.$largePadding;
+$extraLargePadding: variables.$extraLargePadding;
+
+$extraSmallRound: 4px;
+$smallRound: 6px;
+$defaultRound: 8px;
+$largeRound: 10px;
+$extraLargeRound: 12px;

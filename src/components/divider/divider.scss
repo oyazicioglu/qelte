@@ -1,0 +1,53 @@
+@use '../styles/theme/theme';
+
+.qei-divider {
+	line-height: 1;
+	&.direction-vertical {
+		width: 1px;
+		height: 100%;
+	}
+
+	&.direction-horizontal {
+		width: 100%;
+		height: 1px;
+	}
+
+	&.color-default {
+		background-color: map-get($map: theme.$themeColors, $key: 'divider');
+	}
+
+	&.color-secondary {
+		background-color: map-get($map: theme.$themeColors, $key: 'secondaryText');
+		opacity: 0.5;
+	}
+
+	&.color-primary {
+		background-color: map-get($map: theme.$primaryColors, $key: 'bg');
+		opacity: 0.5;
+	}
+
+	&.color-accent {
+		background-color: map-get($map: theme.$accentColors, $key: 'bg');
+		opacity: 0.5;
+	}
+
+	&.color-warning {
+		background-color: map-get($map: theme.$alertColors, $key: 'warning');
+		opacity: 0.5;
+	}
+
+	&.color-success {
+		background-color: map-get($map: theme.$alertColors, $key: 'success');
+		opacity: 0.5;
+	}
+
+	&.color-info {
+		background-color: map-get($map: theme.$alertColors, $key: 'info');
+		opacity: 0.5;
+	}
+
+	&.color-danger {
+		background-color: map-get($map: theme.$alertColors, $key: 'danger');
+		opacity: 0.5;
+	}
+}

@@ -1,0 +1,25 @@
+@use '../styles/theme/theme';
+
+.qei-table-head {
+    display: table-row;
+    transition: all 200ms ease-in-out;
+    height: 64px;
+    border-bottom: 1px solid map-get($map: theme.$themeColors, $key: 'divider');
+    position: -webkit-sticky; // this is for all Safari (Desktop & iOS), not for Chrome
+    position: sticky;
+    top: 0;
+    background-color: map-get($map: theme.$themeColors, $key: 'paper');
+
+    &.condense {
+        height: 42px;
+    }
+
+    .qei-table-head-cell {
+        cursor: default;
+        border-bottom: 1px solid map-get($map: theme.$themeColors, $key: 'divider');
+    }
+
+    .qei-table-head-cell.sortable {
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,7 @@
+.qei-image {
+	&.contain {
+		img {
+			object-fit: contain;
+		}
+	}
+}

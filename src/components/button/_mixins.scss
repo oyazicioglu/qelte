@@ -1,0 +1,250 @@
+@use '../styles/theme/theme';
+@use '../styles/theme/mixins' as globalMixins;
+@use '../styles/theme/variables' as themeVariables;
+@use './variables';
+@use 'sass:color';
+
+@mixin default {
+	color: inherit;
+	border: 1px solid transparent;
+	position: relative;
+	padding: 0;
+	margin: 0;
+	border: none;
+	line-height: 1;
+	cursor: pointer;
+	text-align: center;
+}
+
+@mixin elementSize($size) {
+	@if $size == 'extra-small' {
+		height: #{themeVariables.$extraSmallHeight}px;
+		font-size: themeVariables.$extraSmallFontSize;
+		padding: variables.$extraSmallPadding;
+	} @else if $size == 'small' {
+		height: #{themeVariables.$smallHeight}px;
+		font-size: themeVariables.$smallFontSize;
+		padding: variables.$smallPadding;
+	} @else if($size == 'default') {
+		height: #{themeVariables.$defaultHeight}px;
+		font-size: themeVariables.$defaultFontSize;
+		padding: variables.$defaultPadding;
+	} @else if($size == 'large') {
+		height: #{themeVariables.$largeHeight}px;
+		font-size: themeVariables.$largeFontSize;
+		padding: variables.$largePadding;
+	} @else if($size == 'extra-large') {
+		height: #{themeVariables.$extraLargeHeight}px;
+		font-size: themeVariables.$extraLargeFontSize;
+		padding: variables.$extraLargePadding;
+	}
+}
+
+@mixin round($size) {
+	@if $size == 'extra-small' {
+		border-radius: variables.$extraSmallRound;
+		.hover {
+			border-radius: variables.$extraSmallRound;
+		}
+	} @else if $size == 'small' {
+		border-radius: variables.$smallRound;
+		.hover {
+			border-radius: variables.$smallRound;
+		}
+	} @else if($size == 'default') {
+		border-radius: variables.$defaultRound;
+		.hover {
+			border-radius: variables.$defaultRound;
+		}
+	} @else if($size == 'large') {
+		border-radius: variables.$largeRound;
+		.hover {
+			border-radius: variables.$largeRound;
+		}
+	} @else if($size == 'extra-large') {
+		border-radius: variables.$extraLargeRound;
+		.hover {
+			border-radius: variables.$extraLargeRound;
+		}
+	}
+}
+
+@mixin basic() {
+	@include default();
+	background: transparent;
+
+	&:not(:disabled).color-default {
+		background: transparent;
+		color: map-get($map: theme.$themeColors, $key: 'primaryText');
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: darken(map-get(theme.$themeColors, 'paper'), 25);
+		}
+	}
+
+	&:not(:disabled).color-primary {
+		color: map-get($map: theme.$primaryColors, $key: 'bg');
+		&.active {
+			background-color: map-get(theme.$primaryColors, 'bg');
+			color: map-get($map: theme.$themeColors, $key: 'background');
+		}
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: map-get(theme.$primaryColors, 'bg');
+		}
+	}
+
+	&:not(:disabled).color-accent {
+		color: map-get($map: theme.$accentColors, $key: 'bg');
+		&.active {
+			background-color: map-get(theme.$accentColors, 'bg');
+			color: map-get($map: theme.$themeColors, $key: 'background');
+		}
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: map-get(theme.$accentColors, 'bg');
+		}
+	}
+
+	&:not(:disabled).color-warning {
+		color: map-get($map: theme.$alertColors, $key: 'warning');
+		&.active {
+			background-color: map-get(theme.$alertColors, 'warning');
+			color: map-get($map: theme.$themeColors, $key: 'background');
+		}
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: map-get(theme.$alertColors, 'paper');
+		}
+	}
+
+	&:not(:disabled).color-success {
+		color: map-get($map: theme.$alertColors, $key: 'success');
+		&.active {
+			background-color: map-get(theme.$alertColors, 'success');
+			color: map-get($map: theme.$themeColors, $key: 'background');
+		}
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: map-get(theme.$alertColors, 'success');
+		}
+	}
+
+	&:not(:disabled).color-info {
+		color: map-get($map: theme.$alertColors, $key: 'info');
+		&.active {
+			background-color: map-get(theme.$alertColors, 'info');
+			color: map-get($map: theme.$themeColors, $key: 'background');
+		}
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: map-get(theme.$alertColors, 'info');
+		}
+	}
+
+	&:not(:disabled).color-danger {
+		color: map-get($map: theme.$alertColors, $key: 'danger');
+		&.active {
+			background-color: map-get(theme.$alertColors, 'danger');
+			color: map-get($map: theme.$themeColors, $key: 'background');
+		}
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: map-get(theme.$alertColors, 'danger');
+		}
+	}
+
+	&:disabled {
+		color: map-get($map: theme.$themeColors, $key: 'disabledText');
+		&.active {
+			background-color: map-get(theme.$themeColors, 'disabledText');
+			color: map-get($map: theme.$themeColors, $key: 'background');
+		}
+	}
+}
+
+@mixin flat() {
+	@include default();
+
+	&:not(:disabled).color-default {
+		background-color: map-get($map: theme.$themeColors, $key: 'paper');
+		color: map-get($map: theme.$themeColors, $key: 'primaryText');
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: darken(map-get(theme.$themeColors, 'paper'), 25);
+		}
+	}
+
+	&:not(:disabled).color-primary {
+		background-color: map-get($map: theme.$primaryColors, $key: 'bg');
+		color: map-get($map: theme.$primaryColors, $key: 'fg');
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: darken(map-get(theme.$primaryColors, 'bg'), 25);
+		}
+	}
+
+	&:not(:disabled).color-accent {
+		background-color: map-get($map: theme.$accentColors, $key: 'bg');
+		color: map-get($map: theme.$accentColors, $key: 'fg');
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: darken(map-get(theme.$accentColors, 'bg'), 25);
+		}
+	}
+
+	&:not(:disabled).color-warning {
+		background-color: map-get($map: theme.$alertColors, $key: 'warning');
+		color: white;
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: darken(map-get(theme.$alertColors, 'warning'), 25);
+		}
+	}
+
+	&:not(:disabled).color-success {
+		background-color: map-get($map: theme.$alertColors, $key: 'success');
+		color: white;
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: darken(map-get(theme.$alertColors, 'success'), 25);
+		}
+	}
+
+	&:not(:disabled).color-info {
+		background-color: map-get($map: theme.$alertColors, $key: 'info');
+		color: white;
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: darken(map-get(theme.$alertColors, 'info'), 25);
+		}
+	}
+
+	&:not(:disabled).color-danger {
+		background-color: map-get($map: theme.$alertColors, $key: 'danger');
+		color: white;
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: darken(map-get(theme.$alertColors, 'danger'), 25);
+		}
+	}
+
+	&:disabled {
+		background-color: map-get($map: theme.$themeColors, $key: 'disabled');
+		color: map-get($map: theme.$themeColors, $key: 'disabledText');
+		&.active > .hover,
+		&.active:active > .hover {
+			background-color: darken(map-get(theme.$themeColors, 'disabled'), 25);
+		}
+	}
+}
+
+@mixin stroked() {
+	@include basic();
+	border: 1px solid map-get($map: theme.$themeColors, $key: 'stroke');
+}
+
+@mixin raised() {
+	@include flat();
+	@include globalMixins.elevations(3);
+}

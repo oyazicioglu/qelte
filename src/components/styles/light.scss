@@ -1,0 +1,7 @@
+@forward './theme/theme' with (
+	$themeType: 'light'
+);
+
+:root[theme='light'] {
+	@import './global';
+}

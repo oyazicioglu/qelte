@@ -1,0 +1,82 @@
+@use '../styles/theme/theme';
+@use './variables';
+
+.qei-progress-bar {
+	position: relative;
+	width: 100%;
+	min-width: 100px;
+	overflow: hidden;
+
+	.background {
+		width: 100%;
+		height: 100%;
+		background-color: map-get($map: theme.$themeColors, $key: 'divider');
+	}
+
+	.indicator {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+	}
+
+	&.indeterminate {
+		.indicator {
+			position: absolute;
+			top: 0;
+			left: 0;
+			animation: indeterminateAnimation 1s infinite linear;
+			transform-origin: 0% 50%;
+		}
+	}
+
+	&.color-default {
+		.indicator {
+			background-color: map-get($map: theme.$themeColors, $key: 'secondaryText');
+		}
+	}
+
+	&.color-primary {
+		.indicator {
+			background-color: map-get($map: theme.$primaryColors, $key: 'bg');
+		}
+	}
+
+	&.color-accent {
+		.indicator {
+			background-color: map-get($map: theme.$accentColors, $key: 'bg');
+		}
+	}
+
+	&.size-extra-small {
+		height: variables.$sizeExtraSmall;
+	}
+
+	&.size-small {
+		height: variables.$sizeSmall;
+	}
+
+	&.size-default {
+		height: variables.$sizeDefault;
+	}
+
+	&.size-large {
+		height: variables.$sizeLarge;
+	}
+
+	&.size-extra-large {
+		height: variables.$sizeExtraLarge;
+	}
+}
+
+@keyframes indeterminateAnimation {
+	0% {
+		transform: translateX(0) scaleX(0);
+	}
+	50% {
+		transform: translateX(0) scaleX(0.5);
+	}
+	100% {
+		transform: translateX(100%) scaleX(0.25);
+	}
+}
