@@ -6,74 +6,32 @@
 	position: relative;
 
 	&.size-extra-small {
-		font-size: functions.pixelToRem(8);
+		.qei-title {
+			font-size: 0.75em;
+		}
 	}
 
 	&.size-small {
-		font-size: functions.pixelToRem(10);
+		.qei-title {
+			font-size: 0.85em;
+		}
 	}
 
 	&.size-default {
-		font-size: functions.pixelToRem(12);
+		.qei-title {
+			font-size: 1em;
+		}
 	}
 
 	&.size-large {
-		font-size: functions.pixelToRem(14);
+		.qei-title {
+			font-size: 1.2em;
+		}
 	}
 
 	&.size-extra-large {
-		font-size: functions.pixelToRem(16);
-	}
-
-	.qei-text {
-		font-size: 1em;
-	}
-
-	&:not(.disabled).color-default {
-		.header {
-			background-color: darken(map-get($map: theme.$themeColors, $key: 'paper'), 10);
-		}
-	}
-
-	&:not(.disabled).color-primary {
-		.header {
-			background-color: darken(map-get($map: theme.$primaryColors, $key: 'bg'), 10);
-		}
-	}
-
-	&:not(.disabled).color-accent {
-		.header {
-			background-color: darken(map-get($map: theme.$accentColors, $key: 'bg'), 10);
-		}
-	}
-
-	&:not(.disabled).color-warning {
-		.header {
-			background-color: darken(map-get($map: theme.$alertColors, $key: 'warning'), 10);
-		}
-	}
-
-	&:not(.disabled).color-success {
-		.header {
-			background-color: darken(map-get($map: theme.$alertColors, $key: 'success'), 10);
-		}
-	}
-
-	&:not(.disabled).color-info {
-		.header {
-			background-color: darken(map-get($map: theme.$alertColors, $key: 'info'), 10);
-		}
-	}
-
-	&:not(.disabled).color-danger {
-		.header {
-			background-color: darken(map-get($map: theme.$alertColors, $key: 'danger'), 10);
-		}
-	}
-
-	&.disabled {
-		.header {
-			background-color: darken(map-get($map: theme.$themeColors, $key: 'disabledText'), 10);
+		.qei-title {
+			font-size: 1.4em;
 		}
 	}
 }

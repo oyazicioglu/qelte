@@ -114,3 +114,5 @@ export type FormElementType = 'number' | 'checkbox' | 'text' | 'password' | 'but
 export type ColumnSize = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
 
 export type MenuPosition = 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
+
+export type NotificationPosition = 'left' | 'right' | 'center';

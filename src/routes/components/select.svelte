@@ -5,7 +5,6 @@
 	import Select from '../../components/select/select.svelte';
 	import Title from '../../components/title/title.svelte';
 	import { createUId } from '../../components/utils/uid-creator';
-	import TestComponent from '../../test-component.svelte';
 	import Span from '../../components/span/span.svelte';
 
 	const selectModel = new SelectModel([

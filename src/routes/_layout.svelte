@@ -66,6 +66,7 @@
 						<li><Link href="/components/progressbar">Progress Bars</Link></li>
 						<li><Link href="/components/menu">Dropdown Menu</Link></li>
 						<li><Link href="/components/message">Message</Link></li>
+						<li><Link href="/components/notification">Notification</Link></li>
 					</ul>
 				</div>
 			</Paper>

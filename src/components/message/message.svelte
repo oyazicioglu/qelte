@@ -6,6 +6,8 @@
 	import Title from '../title/title.svelte';
 	import Span from '../span/span.svelte';
 	import IconButton from '../icon-button/icon-button.svelte';
+	import { createEventDispatcher } from 'svelte';
+	import Divider from '../divider/divider.svelte';
 
 	export let color: BaseColor = 'inherit';
 	export let bold = false;
@@ -22,9 +24,14 @@
 	export let showMessage = true;
 	export let textAlign: TextAlign = 'start';
 	export let fullWidth = true;
+	export let gap: FlexGap = '4';
+	export let rounded = false;
+
+	const dispatcher = createEventDispatcher();
 
 	const closeMessage = () => {
 		showMessage = false;
+		dispatcher('close');
 	};
 
 	$: classes = [
@@ -42,22 +49,24 @@
 
 {#if showMessage}
 	<div bind:this={ref} on:click {...$$restProps} class={classes} style={$$restProps.style}>
-		<Paper {fullWidth} {color} elevation={hasShadow ? '3' : '0'}>
-			<Flex direction="column" fullWidth {justifyContent}>
-				<Flex direction="row" class="header" alignItems="center">
-					<FlexItem grow={1}>
-						{#if title}
-							<Title class="p-{padding}" align={textAlign} heading="6">{title ? title : ''}</Title>
-						{/if}
-					</FlexItem>
-					{#if showCloseButton}
-						<FlexItem class="mr-{padding}">
-							<IconButton circle {size} iconName="times" on:click={closeMessage} />
+		<Paper {rounded} {fullWidth} {color} {padding} elevation={hasShadow ? '3' : '0'}>
+			<Flex direction="column" fullWidth {justifyContent} {gap}>
+				<Flex direction="column" gap="1">
+					<Flex direction="row" class="header" alignItems="center" gap="5">
+						<FlexItem grow={1}>
+							<Title bold align={textAlign} heading="6">{title ? title : '...'}</Title>
 						</FlexItem>
-					{/if}
+
+						{#if showCloseButton}
+							<FlexItem alignSelf="flex-end">
+								<IconButton circle {size} iconName="times" on:click={closeMessage} />
+							</FlexItem>
+						{/if}
+					</Flex>
+					<Divider />
 				</Flex>
 				{#if message}
-					<Span class="p-{padding}" align={textAlign} noWrap={false} {bold} {italic}>{message}</Span>
+					<Span {size} align={textAlign} noWrap={false} {bold} {italic}>{message}</Span>
 				{/if}
 				<slot />
 			</Flex>

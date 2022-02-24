@@ -1,6 +1,7 @@
 <script lang="ts">
-	import type { BaseColor } from '../types.js';
+	import type { BaseColor, BaseSize } from '../types.js';
 	export let color: BaseColor = 'inherit';
+	export let size: BaseSize = 'default';
 	export let bold = false;
 	export let italic = false;
 	export let disabled = false;
@@ -13,6 +14,7 @@
 		`qei-link`,
 		bold && `bold`,
 		italic && `italic`,
+		`size-${size}`,
 		active && `active`,
 		disabled && `disabled`,
 		`color-${color}`,

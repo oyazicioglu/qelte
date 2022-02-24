@@ -1,102 +1,10 @@
 @use '../styles/theme/theme';
 
 .qei-notification {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    top: 0;
-    overflow: hidden;
-    z-index: 888;
-
-    .notifications {
-        overflow-y: auto;
-        position: absolute;
-        right: 0;
-        top: 0;
-        max-width: 400px;
-        height: 100%;
-    }
-}
-
-.qei-notification-item {
-    min-width: 200px;
-    overflow: hidden;
-    background-color: map-get($map: theme.$themeColors, $key: 'paper');
-
-    .indicator {
-        width: 4px;
-        height: 100%;
-    }
-
-    .qei-title {
-        font-size: 0.75em;
-    }
-
-    &.color-default {
-        color: map-get($map: theme.$themeColors, $key: 'primaryText') !important;
-
-        .indicator {
-            background-color: map-get($map: theme.$themeColors, $key: 'paper');
-        }
-
-        .qei-title,
-        .qei-icon-button,
-        .qei-link {
-            color: map-get($map: theme.$themeColors, $key: 'secondaryText') !important;
-        }
-    }
-
-    &.color-warning {
-        color: white;
-
-        .indicator {
-            background-color: map-get($map: theme.$alertColors, $key: 'warning');
-        }
-        .qei-title,
-        .qei-icon-button,
-        .qei-link {
-            color: rgb(224, 224, 224);
-        }
-    }
-
-    &.color-danger {
-        color: white;
-
-        .indicator {
-            background-color: map-get($map: theme.$alertColors, $key: 'danger');
-        }
-        .qei-title,
-        .qei-icon-button,
-        .qei-link {
-            color: rgb(224, 224, 224);
-        }
-    }
-
-    &.color-info {
-        color: white;
-
-        .indicator {
-            background-color: map-get($map: theme.$alertColors, $key: 'info');
-        }
-
-        .qei-title,
-        .qei-icon-button,
-        .qei-link {
-            color: rgb(224, 224, 224);
-        }
-    }
-
-    &.color-success {
-        color: white;
-
-        .indicator {
-            background-color: map-get($map: theme.$alertColors, $key: 'success');
-        }
-
-        .qei-title,
-        .qei-icon-button,
-        .qei-link {
-            color: rgb(224, 224, 224);
-        }
-    }
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	top: 0;
+	overflow: hidden;
+	z-index: 888;
 }

@@ -1,4 +1,5 @@
 @use '../styles/theme/theme';
+@use '../styles/theme/typography';
 
 .qei-link {
 	display: flex;
@@ -7,6 +8,11 @@
 	justify-content: flex-start;
 	position: relative;
 	width: fit-content;
+
+	@include typography.textColors();
+	@include typography.textAlign();
+	@include typography.textSize();
+	@include typography.textStyle();
 
 	.underline {
 		position: absolute;
