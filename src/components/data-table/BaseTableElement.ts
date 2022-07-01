@@ -1,4 +1,4 @@
-import type { CellType, ValueTypes } from './types';
+import type { ValueTypes } from './types';
 
 class BaseTableElement {
     constructor(private _key: string | number, private _value: ValueTypes) {}

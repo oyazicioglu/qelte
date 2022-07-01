@@ -2,7 +2,7 @@ import type { IDataTableElement } from './IDataTableElement';
 import { TableColumnElement } from './TableColumnElement';
 import { TableHeaderElement } from './TableHeaderElement';
 import { TableRowElement } from './TableRowElement';
-import type { ColumnType, ElementJSON, HeaderType, RowType, ValueTypes } from './types';
+import type { ColumnType, ElementJSON, HeaderType, RowType } from './types';
 
 class DataTableElement implements IDataTableElement {
     constructor(
