@@ -1,10 +1,12 @@
-import type { IValueObject } from './IValueObject';
+import { BaseTableElement } from './BaseElement';
 import type { ValueTypes } from './types';
 
-class TableElement {
+class TableElement extends BaseTableElement {
     private _items: TableElement[] = [];
 
-    constructor(private _key: string | number, private _value: ValueTypes) {}
+    constructor(_key: string | number, _value: ValueTypes) {
+        super(_key, _value);
+    }
 
     get items() {
         return this._items;
@@ -12,22 +14,6 @@ class TableElement {
 
     set items(items: TableElement[]) {
         this._items = items;
-    }
-
-    set value(value: ValueTypes) {
-        this._value = value;
-    }
-
-    get value() {
-        return this._value;
-    }
-
-    get key() {
-        return this._key;
-    }
-
-    set key(key: string | number) {
-        this._key = key;
     }
 
     add(element: TableElement) {

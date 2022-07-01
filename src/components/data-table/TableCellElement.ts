@@ -1,24 +1,9 @@
-import type { IValueObject } from './IValueObject';
-import { TableElement } from './TableElement';
+import { BaseTableElement } from './BaseElement';
 import type { CellType, ValueTypes } from './types';
 
-class TableCell {
-    constructor(private _key: string | number, private _value: ValueTypes) {}
-
-    set value(value: ValueTypes) {
-        this._value = value;
-    }
-
-    get value() {
-        return this._value;
-    }
-
-    get key() {
-        return this._key;
-    }
-
-    set key(key: string | number) {
-        this._key = key;
+class TableCell extends BaseTableElement {
+    constructor(key: string | number, value: ValueTypes) {
+        super(key, value);
     }
 
     toJSON(): CellType {
