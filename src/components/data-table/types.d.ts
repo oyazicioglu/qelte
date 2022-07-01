@@ -19,3 +19,7 @@ export type CellType = {
     key: string | number;
     value: ValueTypes;
 };
+
+export type ElementJSON = {
+    [key: string | number, value: string];
+};

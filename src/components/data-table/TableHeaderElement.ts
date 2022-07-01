@@ -1,6 +1,6 @@
 import type { ITableCompositeElement } from './ITableCompositElement';
 import { TableElement } from './TableElement';
-import type { CellType, HeaderType, ValueTypes } from './types';
+import type { CellType, ValueTypes } from './types';
 
 class TableHeaderElement extends TableElement implements ITableCompositeElement {
     constructor(_key: string | number, _value: ValueTypes) {

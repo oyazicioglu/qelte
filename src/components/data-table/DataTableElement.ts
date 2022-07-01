@@ -1,9 +1,8 @@
 import type { IDataTableElement } from './IDataTableElement';
 import { TableColumnElement } from './TableColumnElement';
-import type { TableElement } from './TableElement';
 import { TableHeaderElement } from './TableHeaderElement';
 import { TableRowElement } from './TableRowElement';
-import type { CellType, ColumnType, HeaderType, RowType, ValueTypes } from './types';
+import type { ColumnType, ElementJSON, HeaderType, RowType, ValueTypes } from './types';
 
 class DataTableElement implements IDataTableElement {
     constructor(
@@ -33,7 +32,7 @@ class DataTableElement implements IDataTableElement {
         this.addHeader(newHeader);
     }
 
-    headersToJSON(): CellType[][] {
+    headersToJSON(): ElementJSON {
         return this.headers.map((header) => {
             return header.toJSON();
         });
@@ -50,7 +49,7 @@ class DataTableElement implements IDataTableElement {
         if (!foundHeader) return false;
 
         const otherHeaders = this.headers.filter((h) => h !== header);
-        this.columns = otherHeaders;
+        this.headers = otherHeaders;
         return true;
     }
 
@@ -66,7 +65,7 @@ class DataTableElement implements IDataTableElement {
         this.columns.push(column);
     }
 
-    columnsToJSON(): Object[] {
+    columnsToJSON(): ElementJSON {
         return this.columns.map((column) => {
             return column.toJSON();
         });
@@ -102,7 +101,7 @@ class DataTableElement implements IDataTableElement {
         this._rows = rows;
     }
 
-    rowsToJSON(): Object[] {
+    rowsToJSON(): ElementJSON {
         return this.rows.map((row) => {
             return row.toJSON();
         });
