@@ -1,4 +1,4 @@
-import { BaseTableElement } from './BaseElement';
+import { BaseTableElement } from './BaseTableElement';
 import type { ValueTypes } from './types';
 
 class TableElement extends BaseTableElement {
