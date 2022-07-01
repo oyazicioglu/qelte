@@ -1,7 +1,9 @@
 import type { IDataTableElement } from './IDataTableElement';
-import type { TableColumnElement } from './TableColumnElement';
-import type { TableHeaderElement } from './TableHeaderElement';
-import type { TableRowElement } from './TableRowElement';
+import { TableColumnElement } from './TableColumnElement';
+import type { TableElement } from './TableElement';
+import { TableHeaderElement } from './TableHeaderElement';
+import { TableRowElement } from './TableRowElement';
+import type { CellType, ColumnType, HeaderType, RowType, ValueTypes } from './types';
 
 class DataTableElement implements IDataTableElement {
     constructor(
@@ -22,19 +24,46 @@ class DataTableElement implements IDataTableElement {
         this._headers = headers;
     }
 
-    headersToJSON(): Object[] {
-        throw new Error('Method not implemented.');
+    addHeader(header: TableHeaderElement) {
+        this.headers.push(header);
     }
 
-    headersFromJSON(headers: Object[]) {
-        throw new Error('Method not implemented.');
+    addHeaderFromJSON(header: HeaderType) {
+        const newHeader = new TableHeaderElement(header.key, header.value);
+        this.addHeader(newHeader);
+    }
+
+    headersToJSON(): CellType[][] {
+        return this.headers.map((header) => {
+            return header.toJSON();
+        });
+    }
+
+    headersFromJSON(headers: HeaderType[]) {
+        headers.forEach((header) => {
+            this.addHeaderFromJSON(header);
+        });
+    }
+
+    removeHeader(header: HeaderType) {
+        const foundHeader = this.headers.find((h) => h === header);
+        if (!foundHeader) return false;
+
+        const otherHeaders = this.headers.filter((h) => h !== header);
+        this.columns = otherHeaders;
+        return true;
     }
 
     get columns(): TableColumnElement[] {
         return this._columns;
     }
+
     set columns(columns: TableColumnElement[]) {
         this._columns = columns;
+    }
+
+    addColumn(column: TableColumnElement) {
+        this.columns.push(column);
     }
 
     columnsToJSON(): Object[] {
@@ -43,8 +72,26 @@ class DataTableElement implements IDataTableElement {
         });
     }
 
-    columnsFromJSON(columns: Object[]) {
-        throw new Error('Method not implemented.');
+    addColumnFromJSON(column: ColumnType) {
+        const newColumn = new TableColumnElement(column.key, column.value);
+    }
+
+    columnsFromJSON(columns: ColumnType[]) {
+        columns.forEach((column) => {
+            this.addColumnFromJSON(column);
+        });
+    }
+
+    removeColumn(column: TableColumnElement): boolean {
+        const foundColumn = this.columns.find((c) => c === column);
+        if (!foundColumn) return false;
+
+        const columnIndex = this.columns.findIndex((c) => c === column);
+        this.removeHeader(this.headers[columnIndex]);
+
+        const otherColumns = this.columns.filter((c) => c !== column);
+        this.columns = otherColumns;
+        return true;
     }
 
     get rows(): TableRowElement[] {
@@ -61,8 +108,15 @@ class DataTableElement implements IDataTableElement {
         });
     }
 
-    rowsFromJSON(rows: Object[]) {
-        throw new Error('Method not implemented.');
+    addRowFromJSON(row: RowType) {
+        const newRow = new TableRowElement(row.key, row.value);
+        this.addRow(newRow);
+    }
+
+    rowsFromJSON(rows: RowType[]) {
+        rows.map((row) => {
+            this.addRowFromJSON(row);
+        });
     }
 
     addRow(row: TableRowElement): void {
@@ -70,7 +124,12 @@ class DataTableElement implements IDataTableElement {
     }
 
     removeRow(row: TableRowElement): boolean {
-        throw new Error('Method not implemented.');
+        const foundRow = this.rows.find((r) => r === row);
+        if (!foundRow) return false;
+
+        const otherRows = this.rows.filter((r) => r !== row);
+        this.rows = otherRows;
+        return true;
     }
 }
 

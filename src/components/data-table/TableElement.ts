@@ -1,7 +1,7 @@
 import type { IValueObject } from './IValueObject';
 import type { ValueTypes } from './types';
 
-class TableElement implements IValueObject {
+class TableElement {
     private _items: TableElement[] = [];
 
     constructor(private _key: string | number, private _value: ValueTypes) {}
@@ -47,12 +47,6 @@ class TableElement implements IValueObject {
 
     list(): TableElement[] {
         return this._items;
-    }
-
-    toJSON(): Object {
-        return this.items.map((item) => {
-            return item.toJSON();
-        });
     }
 }
 
