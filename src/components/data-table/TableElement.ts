@@ -1,12 +1,12 @@
 import { BaseTableElement } from './BaseTableElement';
+import type { ITableCompositeElement } from './ITableCompositElement';
+import type { TableCellElement } from './TableCellElement';
 import type { ValueTypes } from './types';
 
-class TableElement extends BaseTableElement {
+class TableElement {
     private _items: TableElement[] = [];
 
-    constructor(_key: string | number, _value: ValueTypes) {
-        super(_key, _value);
-    }
+    constructor(_key: string | number, _value: ValueTypes) {}
 
     get items() {
         return this._items;

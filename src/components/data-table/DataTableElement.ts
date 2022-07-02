@@ -1,4 +1,5 @@
 import type { IDataTableElement } from './IDataTableElement';
+import { TableCellElement } from './TableCellElement';
 import { TableColumnElement } from './TableColumnElement';
 import { TableHeaderElement } from './TableHeaderElement';
 import { TableRowElement } from './TableRowElement';
@@ -44,7 +45,7 @@ class DataTableElement implements IDataTableElement {
         });
     }
 
-    removeHeader(header: HeaderType) {
+    removeHeader(header: TableHeaderElement) {
         const foundHeader = this.headers.find((h) => h === header);
         if (!foundHeader) return false;
 
@@ -102,6 +103,10 @@ class DataTableElement implements IDataTableElement {
     }
 
     rowsToJSON(): ElementJSON {
+        this.rows.map((row) => {
+            console.log(row.toJSON());
+        });
+
         return this.rows.map((row) => {
             return row.toJSON();
         });
@@ -109,7 +114,7 @@ class DataTableElement implements IDataTableElement {
 
     addRowFromJSON(row: RowType) {
         const newRow = new TableRowElement(row.key, row.value);
-        this.addRow(newRow);
+        newRow.add(new TableCellElement())
     }
 
     rowsFromJSON(rows: RowType[]) {

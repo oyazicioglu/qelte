@@ -67,6 +67,7 @@
                         <li><Link href="/components/menu">Dropdown Menu</Link></li>
                         <li><Link href="/components/message">Message</Link></li>
                         <li><Link href="/components/notification">Notification</Link></li>
+                        <li><Link href="/components/data-table">Data Table</Link></li>
                     </ul>
                 </div>
             </Paper>

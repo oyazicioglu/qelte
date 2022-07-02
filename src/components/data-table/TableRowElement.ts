@@ -2,7 +2,7 @@ import type { ITableCompositeElement } from './ITableCompositElement';
 import { TableElement } from './TableElement';
 import type { CellType, ValueTypes } from './types';
 
-class TableRowElement extends TableElement implements ITableCompositeElement {
+class TableRowElement extends TableElement{
     constructor(_key: string | number, _value: ValueTypes) {
         super(_key, _value);
     }

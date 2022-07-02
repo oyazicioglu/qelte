@@ -1,8 +1,13 @@
+import type { TableHeaderElement } from './TableHeaderElement';
+import type { TableRowElement } from './TableRowElement';
+
 export type ValueTypes = string | number | Array | Date | undefined | null;
 
 export type HeaderType = {
     key: string | number;
     value: ValueTypes;
+    sortable?: boolean;
+    align?: 'left' | 'right' | 'center';
 };
 
 export type ColumnType = {
@@ -23,3 +28,9 @@ export type CellType = {
 export type ElementJSON = {
     [key: string | number, value: string];
 };
+
+export interface ITableData {
+    rows: RowType[];
+    headers: HeaderType[];
+    columns?: ColumnType[];
+}

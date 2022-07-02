@@ -1,7 +1,7 @@
 import { BaseTableElement } from './BaseTableElement';
 import type { CellType, ValueTypes } from './types';
 
-class TableCell extends BaseTableElement {
+class TableCellElement extends BaseTableElement {
     constructor(key: string | number, value: ValueTypes) {
         super(key, value);
     }
@@ -14,4 +14,4 @@ class TableCell extends BaseTableElement {
     }
 }
 
-export { TableCell };
+export { TableCellElement };
