@@ -1,12 +1,10 @@
-import type { IDataTableElement } from './IDataTableElement';
-import { TableCellElement } from './TableCellElement';
 import { TableColumnElement } from './TableColumnElement';
 import { TableElement } from './TableElement';
 import { TableHeaderElement } from './TableHeaderElement';
 import { TableRowElement } from './TableRowElement';
 import type { ColumnType, ElementJSON, HeaderType, RowType } from './types';
 
-class DataTableElement implements IDataTableElement {
+class DataTableElement {
     constructor(
         private _rows: TableRowElement[] = [],
         private _headers: TableHeaderElement[] = [],
@@ -144,6 +142,14 @@ class DataTableElement implements IDataTableElement {
         const otherRows = this.rows.filter((r) => r !== row);
         this.rows = otherRows;
         return true;
+    }
+
+    globalSearch(searchValue: string) {
+        console.log(searchValue);
+    }
+
+    hideColumn(header: TableHeaderElement) {
+        console.log(header.toJSON());
     }
 }
 

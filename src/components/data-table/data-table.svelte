@@ -36,6 +36,7 @@
     ]);
 
     let waiting = true;
+    let searchValue: string = undefined;
 
     const id = createUId();
 
@@ -48,6 +49,10 @@
     const tableClasses = [`qei-data-table`, hasDivider && `has-divider`, condense && `condense`, useStrip && `use-strip`]
         .filter(Boolean)
         .join(' ');
+
+    const globalSearch = () => {
+        console.log(searchValue);
+    };
 
     onMount(async () => {
         waiting = false;
@@ -62,15 +67,16 @@
             {/if}
 
             <Column>
-                <Row direction="row" alignItems="center">
+                <Row direction="row" gap={'1'}>
                     {#if showSearch}
                         <Column grow={1}>
-                            <SearchInput label="Search" />
+                            <SearchInput bind:value={searchValue} label="Search"
+                                ><IconButton on:click={globalSearch} icon={Search} /></SearchInput>
                         </Column>
                     {/if}
                     {#if showFilters}
                         <Column grow={0}>
-                            <Menu color="primary" type="flat" rounded listModel={list} useIconButton position="bottom-right">
+                            <Menu type="flat" rounded icon={Filter} listModel={list} useIconButton position="bottom-right">
                                 <Filter slot="icon-button-icon" />
                                 <Filter slot="button-icon" />
                             </Menu>
@@ -80,7 +86,7 @@
             </Column>
 
             <Column grow={1}>
-                {#if table?.rows?.length === 0}
+                {#if table && table.rows && table.rows.length === 0}
                     <Row wrap="nowrap" justifyContent="center" alignItems="center">
                         <Column>
                             <Title heading="6" color="secondary">No record found!</Title>
@@ -89,7 +95,7 @@
                 {:else}
                     <div class="table-container">
                         <table>
-                            {#if table?.headers}
+                            {#if table.headers}
                                 <thead>
                                     <TableHead {condense}>
                                         {#each table.headers as header, i}
@@ -98,12 +104,17 @@
                                                     <Column grow={1}>{header.value}</Column>
                                                     {#if showColumnVisibility}
                                                         <Column>
-                                                            <IconButton circle><View size={16} /></IconButton>
+                                                            <IconButton
+                                                                on:click={() => {
+                                                                    table.hideColumn(header);
+                                                                }}
+                                                                circle
+                                                                icon={View} />
                                                         </Column>
                                                     {/if}
                                                     {#if showColumnSearch}
                                                         <Column>
-                                                            <IconButton><Search size={16} /></IconButton>
+                                                            <IconButton><Search size={16} icon={Search} /></IconButton>
                                                         </Column>
                                                     {/if}
                                                 </Row>
@@ -112,7 +123,7 @@
                                     </TableHead>
                                 </thead>
                             {/if}
-                            {#if table?.rows}
+                            {#if table.rows}
                                 <tbody>
                                     {#each table.rows as row, j}
                                         <TableRow {condense} {useStrip} {hasDivider} odd={j % 2 === 1}>

@@ -5,7 +5,17 @@
     import Icon from '../icon/icon.svelte';
     import IconButton from '../icon-button/icon-button.svelte';
     import Button from '../button/button.svelte';
-    import type { BaseColor, BaseSize, ButtonType, FlexAlignItem, FlexDirection, FlexGap, FlexJustify, MenuPosition } from '../types.js';
+    import type {
+        BaseColor,
+        BaseSize,
+        ButtonType,
+        FlexAlignItem,
+        FlexDirection,
+        FlexGap,
+        FlexJustify,
+        IconSize,
+        MenuPosition,
+    } from '../types.js';
     import type { IListItem, IListModel } from '../list/ListModel.js';
     import { onMount } from 'svelte';
     import Span from '../span/span.svelte';
@@ -27,11 +37,12 @@
     export let paddingVertical: FlexGap = '0';
     export let paddingHorizontal: FlexGap = '0';
     export let text: string = undefined;
-    export let menuIcon = undefined;
     export let activeItem: IListItem = undefined;
     export let listModel: IListModel;
     export let circledIcon = false;
     export let useIconButton = true;
+    export let icon: any = undefined;
+    export let iconSize: IconSize = 16;
 
     let showList = false;
 
@@ -89,15 +100,13 @@
     class:rounded
     style={styles}>
     {#if useIconButton}
-        <IconButton circle={circledIcon} on:click={toggleMenu} {type} {color} {size} {disabled}>
-            <Icon><slot name="icon-button-icon" /></Icon>
-        </IconButton>
+        <IconButton circle={circledIcon} on:click={toggleMenu} {type} {color} {iconSize} {disabled} {icon} />
     {/if}
 
     {#if !useIconButton}
         <Button on:click={toggleMenu} {type} {color} {size} {disabled} {rounded} gap="2">
-            {#if menuIcon}
-                <Icon {type} color={menuIcon && !text ? color : 'inherit'} {size} {disabled}><slot name="button-icon" /></Icon>
+            {#if icon}
+                <Icon {type} color={icon && !text ? color : 'inherit'} size={iconSize} {disabled} {icon} />
             {/if}
 
             {#if text}
@@ -131,8 +140,8 @@
                             {#if item.component}
                                 <svelte:component this={item.component} />
                             {:else}
-                                {#if item.iconName}
-                                    <Icon><slot name="button-icon" /></Icon>
+                                {#if item.icon}
+                                    <Icon icon={item.icon} {size} />
                                 {/if}
                                 <Span {size}>{item.text ? item.text : item.value}</Span>
                             {/if}

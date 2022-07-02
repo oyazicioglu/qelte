@@ -1,11 +1,12 @@
 .qei-menu {
-	position: relative;
-	display: grid;
-	grid-auto-flow: column;
-	justify-content: start;
+    position: relative;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: stretch;
+    height: 100%;
 
-	.qei-menu-container {
-		position: absolute;
-		z-index: 100;
-	}
+    .qei-menu-container {
+        position: absolute;
+        z-index: 100;
+    }
 }
