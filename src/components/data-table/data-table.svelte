@@ -10,43 +10,48 @@
     import Column from '../layout/column.svelte';
     import Preloader from '../preloader/preloader.svelte';
     import SearchInput from '../search-input/search-input.svelte';
-    import type { ITableData } from './types.js';
+    import type { HeaderType, RowType } from './types.js';
     import { DataTableElement } from './DataTableElement.js';
+    import { onMount } from 'svelte';
+    import IconButton from '../icon-button/icon-button.svelte';
+    import View from 'carbon-icons-svelte/lib/View.svelte';
+    import Search from 'carbon-icons-svelte/lib/Search.svelte';
+    import Filter from 'carbon-icons-svelte/lib/Filter.svelte';
+    import Menu from '../menu/menu.svelte';
+    import { ListModel } from '../list/ListModel.js';
 
-    export let data: ITableData = {
-        headers: [
-            { key: '1', value: '1' },
-            { key: '2', value: '2' },
-            { key: '3', value: '3' },
-            { key: '4', value: '4' },
-        ],
-        rows: [
-            { key: '1', value: '1' },
-            { key: '2', value: '2' },
-            { key: '3', value: '3' },
-            { key: '4', value: '4' },
-        ],
-    };
-
-    export let showSearch = false;
-    export let showFilters = false;
+    export let showSearch = true;
+    export let showFilters = true;
+    export let showColumnSearch = true;
+    export let showColumnVisibility = true;
     export let ref = undefined;
     export let hasDivider = true;
     export let useStrip = false;
     export let condense = false;
+    export let headers: HeaderType[];
+    export let rows: RowType[];
+    export let list: ListModel = new ListModel([
+        { text: 'Text1', value: 'Value 1', active: true, id: '1' },
+        { text: 'Text2', value: 'Value 2', active: true, id: '2' },
+    ]);
 
     let waiting = true;
-    let filteredData = data;
 
     const id = createUId();
 
     let table = new DataTableElement();
-    table.headersFromJSON(data.headers);
-    table.rowsFromJSON(data.rows);
+    table.headersFromJSON(headers);
+    table.rowsFromJSON(rows);
 
     table.rowsToJSON();
 
-    const tableClasses = [`qei-data-table`, hasDivider && `has-divider`, useStrip && `use-strip`].filter(Boolean).join(' ');
+    const tableClasses = [`qei-data-table`, hasDivider && `has-divider`, condense && `condense`, useStrip && `use-strip`]
+        .filter(Boolean)
+        .join(' ');
+
+    onMount(async () => {
+        waiting = false;
+    });
 </script>
 
 <div {id} bind:this={ref} {...$$restProps} class={tableClasses} style={$$restProps.style}>
@@ -57,23 +62,26 @@
             {/if}
 
             <Column>
-                <Row direction="row" alignItems="baseline">
+                <Row direction="row" alignItems="center">
                     {#if showSearch}
-                        <Column extraSmall="12" large="6" grow={1}>
+                        <Column grow={1}>
                             <SearchInput label="Search" />
                         </Column>
                     {/if}
                     {#if showFilters}
-                        <Column extraSmall="12" large="6" grow={1}>
-                            <div>Filters</div>
+                        <Column grow={0}>
+                            <Menu color="primary" type="flat" rounded listModel={list} useIconButton position="bottom-right">
+                                <Filter slot="icon-button-icon" />
+                                <Filter slot="button-icon" />
+                            </Menu>
                         </Column>
                     {/if}
                 </Row>
             </Column>
 
             <Column grow={1}>
-                {#if !filteredData || !filteredData.rows || filteredData.rows.length === 0}
-                    <Row justifyContent="center" alignItems="center">
+                {#if table?.rows?.length === 0}
+                    <Row wrap="nowrap" justifyContent="center" alignItems="center">
                         <Column>
                             <Title heading="6" color="secondary">No record found!</Title>
                         </Column>
@@ -81,21 +89,35 @@
                 {:else}
                     <div class="table-container">
                         <table>
-                            {#if filteredData && filteredData.headers}
+                            {#if table?.headers}
                                 <thead>
                                     <TableHead {condense}>
-                                        {#each filteredData.headers as header, i}
-                                            <TableHeadCell sortable={header.sortable} align={header.align}>{header.value}</TableHeadCell>
+                                        {#each table.headers as header, i}
+                                            <TableHeadCell sortable={header.sortable} align={header.align}>
+                                                <Row gap="4" wrap="nowrap" alignItems="center" justifyContent="space-between">
+                                                    <Column grow={1}>{header.value}</Column>
+                                                    {#if showColumnVisibility}
+                                                        <Column>
+                                                            <IconButton circle><View size={16} /></IconButton>
+                                                        </Column>
+                                                    {/if}
+                                                    {#if showColumnSearch}
+                                                        <Column>
+                                                            <IconButton><Search size={16} /></IconButton>
+                                                        </Column>
+                                                    {/if}
+                                                </Row>
+                                            </TableHeadCell>
                                         {/each}
                                     </TableHead>
                                 </thead>
                             {/if}
-                            {#if filteredData && filteredData.rows}
+                            {#if table?.rows}
                                 <tbody>
-                                    {#each filteredData.rows as row, j}
+                                    {#each table.rows as row, j}
                                         <TableRow {condense} {useStrip} {hasDivider} odd={j % 2 === 1}>
-                                            {#each Object.entries(row) as [key, value], k}
-                                                <TableCell align={filteredData.headers[k].align}>{value}</TableCell>
+                                            {#each row.items as cell, k}
+                                                <TableCell align={table.headers[k].align}>{cell.value}</TableCell>
                                             {/each}
                                         </TableRow>
                                     {/each}

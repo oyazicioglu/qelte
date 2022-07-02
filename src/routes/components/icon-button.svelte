@@ -1,73 +1,73 @@
 <script>
-	import Divider from '../../components/divider/divider.svelte';
-	import Flex from '../../components/flex/flex.svelte';
-	import Title from '../../components/title/title.svelte';
-	import IconButton from '../../components/icon-button/icon-button.svelte';
+    import Divider from '../../components/divider/divider.svelte';
+    import Flex from '../../components/flex/flex.svelte';
+    import Title from '../../components/title/title.svelte';
+    import IconButton from '../../components/icon-button/icon-button.svelte';
+    import Notification from 'carbon-icons-svelte/lib/Notification.svelte';
 </script>
 
 <Flex direction="column" gap="10">
-	<Flex direction="column" gap="4">
-		<Title>Icon Button</Title>
-		<Divider />
-	</Flex>
-	<Flex gap="10" direction="column">
-		<Flex gap="4">
-			<IconButton iconName="home" />
-			<IconButton iconName="home" color="primary" />
-			<IconButton iconName="home" color="accent" />
-			<IconButton iconName="home" color="danger" />
-			<IconButton iconName="home" color="info" />
-			<IconButton iconName="home" color="success" />
-			<IconButton iconName="home" color="warning" />
-			<IconButton iconName="home" disabled />
-		</Flex>
-		<Flex gap="4">
-			<IconButton iconName="home" type="flat" />
-			<IconButton iconName="home" type="flat" color="primary" />
-			<IconButton iconName="home" type="flat" color="accent" />
-			<IconButton iconName="home" type="flat" color="danger" />
-			<IconButton iconName="home" type="flat" color="info" />
-			<IconButton iconName="home" type="flat" color="success" />
-			<IconButton iconName="home" type="flat" color="warning" />
-			<IconButton iconName="home" type="flat" disabled />
-		</Flex>
-		<Flex gap="4">
-			<IconButton circle iconName="home" type="raised" />
-			<IconButton circle iconName="home" type="raised" color="primary" />
-			<IconButton circle iconName="home" type="raised" color="accent" />
-			<IconButton circle iconName="home" type="raised" color="danger" />
-			<IconButton circle iconName="home" type="raised" color="info" />
-			<IconButton circle iconName="home" type="raised" color="success" />
-			<IconButton circle iconName="home" type="raised" color="warning" />
-			<IconButton circle iconName="home" type="raised" disabled />
-		</Flex>
-		<Flex gap="4">
-			<IconButton iconName="home" type="stroked" />
-			<IconButton iconName="home" type="stroked" color="primary" />
-			<IconButton iconName="home" type="stroked" color="accent" />
-			<IconButton iconName="home" type="stroked" color="danger" />
-			<IconButton iconName="home" type="stroked" color="info" />
-			<IconButton iconName="home" type="stroked" color="success" />
-			<IconButton iconName="home" type="stroked" color="warning" />
-			<IconButton iconName="home" type="stroked" disabled />
-		</Flex>
-		<Flex gap="4">
-			<IconButton circle iconName="home" type="stroked" />
-			<IconButton circle iconName="home" type="stroked" color="primary" />
-			<IconButton circle iconName="home" type="stroked" color="accent" />
-			<IconButton circle iconName="home" type="stroked" color="danger" />
-			<IconButton circle iconName="home" type="stroked" color="info" />
-			<IconButton circle iconName="home" type="stroked" color="success" />
-			<IconButton circle iconName="home" type="stroked" color="warning" />
-			<IconButton circle iconName="home" type="stroked" disabled />
-		</Flex>
+    <Flex direction="column" gap="4">
+        <Title>Icon Button</Title>
+        <Divider />
+    </Flex>
+    <Flex gap="10" direction="column">
+        <Flex gap="4">
+            <IconButton />
+            <IconButton color="primary"><Notification size={20} /></IconButton>
+            <IconButton color="accent"><Notification size={20} /></IconButton>
+            <IconButton color="danger"><Notification size={20} /></IconButton>
+            <IconButton color="info"><Notification size={20} /></IconButton>
+            <IconButton color="success"><Notification size={20} /></IconButton>
+            <IconButton color="warning"><Notification size={20} /></IconButton>
+            <IconButton disabled><Notification size={20} /></IconButton>
+        </Flex>
+        <Flex gap="4">
+            <IconButton type="flat"><Notification size={20} /></IconButton>
+            <IconButton type="flat" color="primary"><Notification size={20} /></IconButton>
+            <IconButton type="flat" color="accent"><Notification size={20} /></IconButton>
+            <IconButton type="flat" color="danger"><Notification size={20} /></IconButton>
+            <IconButton type="flat" color="info"><Notification size={20} /></IconButton>
+            <IconButton type="flat" color="success"><Notification size={20} /></IconButton>
+            <IconButton type="flat" color="warning"><Notification size={20} /></IconButton>
+            <IconButton type="flat" disabled><Notification size={20} /></IconButton>
+        </Flex>
+        <Flex gap="4">
+            <IconButton circle type="raised"><Notification size={20} /></IconButton>
+            <IconButton circle type="raised" color="primary"><Notification size={20} /></IconButton>
+            <IconButton circle type="raised" color="accent"><Notification size={20} /></IconButton>
+            <IconButton circle type="raised" color="danger"><Notification size={20} /></IconButton>
+            <IconButton circle type="raised" color="info"><Notification size={20} /></IconButton>
+            <IconButton circle type="raised" color="success"><Notification size={20} /></IconButton>
+            <IconButton circle type="raised" color="warning"><Notification size={20} /></IconButton>
+            <IconButton circle type="raised" disabled><Notification size={20} /></IconButton>
+        </Flex>
+        <Flex gap="4">
+            <IconButton type="stroked"><Notification size={20} /></IconButton>
+            <IconButton type="stroked" color="primary"><Notification size={20} /></IconButton>
+            <IconButton type="stroked" color="accent"><Notification size={20} /></IconButton>
+            <IconButton type="stroked" color="danger"><Notification size={20} /></IconButton>
+            <IconButton type="stroked" color="info"><Notification size={20} /></IconButton>
+            <IconButton type="stroked" color="success"><Notification size={20} /></IconButton>
+            <IconButton type="stroked" color="warning"><Notification size={20} /></IconButton>
+            <IconButton type="stroked" disabled><Notification size={20} /></IconButton>
+        </Flex>
+        <Flex gap="4">
+            <IconButton circle type="stroked"><Notification size={20} /></IconButton>
+            <IconButton circle type="stroked" color="primary"><Notification size={20} /></IconButton>
+            <IconButton circle type="stroked" color="accent"><Notification size={20} /></IconButton>
+            <IconButton circle type="stroked" color="danger"><Notification size={20} /></IconButton>
+            <IconButton circle type="stroked" color="info"><Notification size={20} /></IconButton>
+            <IconButton circle type="stroked" color="success"><Notification size={20} /></IconButton>
+            <IconButton circle type="stroked" color="warning"><Notification size={20} /></IconButton>
+            <IconButton circle type="stroked" disabled><Notification size={20} /></IconButton>
+        </Flex>
 
-		<Flex gap="4" alignItems="baseline">
-			<IconButton circle iconName="home" type="raised" size="extra-small" />
-			<IconButton circle iconName="home" type="raised" size="small" />
-			<IconButton circle iconName="home" type="raised" size="default" />
-			<IconButton circle iconName="home" type="raised" size="large" />
-			<IconButton circle iconName="home" type="raised" size="extra-large" />
-		</Flex>
-	</Flex>
+        <Flex gap="4" alignItems="baseline">
+            <IconButton circle type="raised" size="small"><Notification size={16} /></IconButton>
+            <IconButton circle type="raised" size="default"><Notification size={20} /></IconButton>
+            <IconButton circle type="raised" size="large"><Notification size={24} /></IconButton>
+            <IconButton circle type="raised" size="extra-large"><Notification size={32} /></IconButton>
+        </Flex>
+    </Flex>
 </Flex>

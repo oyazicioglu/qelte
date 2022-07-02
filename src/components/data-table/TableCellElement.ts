@@ -1,7 +1,7 @@
-import { BaseTableElement } from './BaseTableElement';
+import { TableElement } from './TableElement';
 import type { CellType, ValueTypes } from './types';
 
-class TableCellElement extends BaseTableElement {
+class TableCellElement extends TableElement {
     constructor(key: string | number, value: ValueTypes) {
         super(key, value);
     }

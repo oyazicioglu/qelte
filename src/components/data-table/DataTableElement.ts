@@ -1,6 +1,7 @@
 import type { IDataTableElement } from './IDataTableElement';
 import { TableCellElement } from './TableCellElement';
 import { TableColumnElement } from './TableColumnElement';
+import { TableElement } from './TableElement';
 import { TableHeaderElement } from './TableHeaderElement';
 import { TableRowElement } from './TableRowElement';
 import type { ColumnType, ElementJSON, HeaderType, RowType } from './types';
@@ -29,7 +30,11 @@ class DataTableElement implements IDataTableElement {
     }
 
     addHeaderFromJSON(header: HeaderType) {
-        const newHeader = new TableHeaderElement(header.key, header.value);
+        const newHeader: TableHeaderElement = new TableHeaderElement(header.key, header.value, header.align, header.sortable);
+        Object.entries(header).forEach((headerElements) => {
+            newHeader.add(new TableElement(headerElements[0], headerElements[1]));
+        });
+
         this.addHeader(newHeader);
     }
 
@@ -73,7 +78,12 @@ class DataTableElement implements IDataTableElement {
     }
 
     addColumnFromJSON(column: ColumnType) {
-        const newColumn = new TableColumnElement(column.key, column.value);
+        const newColumn: TableColumnElement = new TableColumnElement();
+        Object.entries(column).forEach((columnElements) => {
+            newColumn.add(new TableElement(columnElements[0], columnElements[1]));
+        });
+
+        this.addColumn(newColumn);
     }
 
     columnsFromJSON(columns: ColumnType[]) {
@@ -103,18 +113,18 @@ class DataTableElement implements IDataTableElement {
     }
 
     rowsToJSON(): ElementJSON {
-        this.rows.map((row) => {
-            console.log(row.toJSON());
-        });
-
         return this.rows.map((row) => {
             return row.toJSON();
         });
     }
 
     addRowFromJSON(row: RowType) {
-        const newRow = new TableRowElement(row.key, row.value);
-        newRow.add(new TableCellElement())
+        const newRow: TableRowElement = new TableRowElement();
+        Object.entries(row).forEach((rowElements) => {
+            newRow.add(new TableElement(rowElements[0], rowElements[1]));
+        });
+
+        this.addRow(newRow);
     }
 
     rowsFromJSON(rows: RowType[]) {

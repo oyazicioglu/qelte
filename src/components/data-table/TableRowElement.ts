@@ -1,10 +1,18 @@
-import type { ITableCompositeElement } from './ITableCompositElement';
-import { TableElement } from './TableElement';
-import type { CellType, ValueTypes } from './types';
+import { createUId } from '../utils/uid-creator';
+import type { IHasKey } from './IHasKey';
+import { TableCompositeElement } from './TableCompositeElement';
+import type { CellType } from './types';
+class TableRowElement extends TableCompositeElement implements IHasKey {
+    private _key: string | number = createUId();
+    constructor() {
+        super();
+    }
 
-class TableRowElement extends TableElement{
-    constructor(_key: string | number, _value: ValueTypes) {
-        super(_key, _value);
+    get key(): string | number {
+        return this._key;
+    }
+    set key(key: string | number) {
+        this._key = key;
     }
 
     toJSON(): CellType[] {
