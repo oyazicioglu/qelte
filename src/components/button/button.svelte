@@ -56,7 +56,7 @@
     {#if waiting && !disabled}
         <Preloader showBackground {color} {size} />
     {/if}
-    <Flex wrap="nowrap" {direction} {gap} {justifyContent} alignItems="center">
+    <Flex style="height:100%" wrap="nowrap" {direction} {gap} {justifyContent} alignItems="center">
         <slot />
     </Flex>
 </button>

@@ -14,60 +14,61 @@
     <Flex gap="10" direction="column">
         <Flex gap="4">
             <IconButton />
-            <IconButton color="primary" icon={Notification} iconSize={20} />
-            <IconButton color="accent" icon={Notification} iconSize={20} />
-            <IconButton color="danger" icon={Notification} iconSize={20} />
-            <IconButton color="info" icon={Notification} iconSize={20} />
-            <IconButton color="success" icon={Notification} iconSize={20} />
-            <IconButton color="warning" icon={Notification} iconSize={20} />
-            <IconButton disabled icon={Notification} iconSize={20} />
+            <IconButton color="primary" icon={Notification} />
+            <IconButton color="accent" icon={Notification} />
+            <IconButton color="danger" icon={Notification} />
+            <IconButton color="info" icon={Notification} />
+            <IconButton color="success" icon={Notification} />
+            <IconButton color="warning" icon={Notification} />
+            <IconButton disabled icon={Notification} />
         </Flex>
         <Flex gap="4">
-            <IconButton icon={Notification} iconSize={20} type="flat" />
-            <IconButton icon={Notification} iconSize={20} type="flat" color="primary" />
-            <IconButton icon={Notification} iconSize={20} type="flat" color="accent" />
-            <IconButton icon={Notification} iconSize={20} type="flat" color="danger" />
-            <IconButton icon={Notification} iconSize={20} type="flat" color="info" />
-            <IconButton icon={Notification} iconSize={20} type="flat" color="success" />
-            <IconButton icon={Notification} iconSize={20} type="flat" color="warning" />
-            <IconButton icon={Notification} iconSize={20} type="flat" disabled />
+            <IconButton icon={Notification} type="flat" />
+            <IconButton icon={Notification} type="flat" color="primary" />
+            <IconButton icon={Notification} type="flat" color="accent" />
+            <IconButton icon={Notification} type="flat" color="danger" />
+            <IconButton icon={Notification} type="flat" color="info" />
+            <IconButton icon={Notification} type="flat" color="success" />
+            <IconButton icon={Notification} type="flat" color="warning" />
+            <IconButton icon={Notification} type="flat" disabled />
         </Flex>
         <Flex gap="4">
-            <IconButton icon={Notification} iconSize={20} circle type="raised" />
-            <IconButton icon={Notification} iconSize={20} circle type="raised" color="primary" />
-            <IconButton icon={Notification} iconSize={20} circle type="raised" color="accent" />
-            <IconButton icon={Notification} iconSize={20} circle type="raised" color="danger" />
-            <IconButton icon={Notification} iconSize={20} circle type="raised" color="info" />
-            <IconButton icon={Notification} iconSize={20} circle type="raised" color="success" />
-            <IconButton icon={Notification} iconSize={20} circle type="raised" color="warning" />
-            <IconButton icon={Notification} iconSize={20} circle type="raised" disabled />
+            <IconButton icon={Notification} circle type="raised" />
+            <IconButton icon={Notification} circle type="raised" color="primary" />
+            <IconButton icon={Notification} circle type="raised" color="accent" />
+            <IconButton icon={Notification} circle type="raised" color="danger" />
+            <IconButton icon={Notification} circle type="raised" color="info" />
+            <IconButton icon={Notification} circle type="raised" color="success" />
+            <IconButton icon={Notification} circle type="raised" color="warning" />
+            <IconButton icon={Notification} circle type="raised" disabled />
         </Flex>
         <Flex gap="4">
-            <IconButton icon={Notification} iconSize={20} type="stroked" />
-            <IconButton icon={Notification} iconSize={20} type="stroked" color="primary" />
-            <IconButton icon={Notification} iconSize={20} type="stroked" color="accent" />
-            <IconButton icon={Notification} iconSize={20} type="stroked" color="danger" />
-            <IconButton icon={Notification} iconSize={20} type="stroked" color="info" />
-            <IconButton icon={Notification} iconSize={20} type="stroked" color="success" />
-            <IconButton icon={Notification} iconSize={20} type="stroked" color="warning" />
-            <IconButton icon={Notification} iconSize={20} type="stroked" disabled />
+            <IconButton icon={Notification} type="stroked" />
+            <IconButton icon={Notification} type="stroked" color="primary" />
+            <IconButton icon={Notification} type="stroked" color="accent" />
+            <IconButton icon={Notification} type="stroked" color="danger" />
+            <IconButton icon={Notification} type="stroked" color="info" />
+            <IconButton icon={Notification} type="stroked" color="success" />
+            <IconButton icon={Notification} type="stroked" color="warning" />
+            <IconButton icon={Notification} type="stroked" disabled />
         </Flex>
         <Flex gap="4">
-            <IconButton icon={Notification} iconSize={20} circle type="stroked" />
-            <IconButton icon={Notification} iconSize={20} circle type="stroked" color="primary" />
-            <IconButton icon={Notification} iconSize={20} circle type="stroked" color="accent" />
-            <IconButton icon={Notification} iconSize={20} circle type="stroked" color="danger" />
-            <IconButton icon={Notification} iconSize={20} circle type="stroked" color="info" />
-            <IconButton icon={Notification} iconSize={20} circle type="stroked" color="success" />
-            <IconButton icon={Notification} iconSize={20} circle type="stroked" color="warning" />
-            <IconButton icon={Notification} iconSize={20} circle type="stroked" disabled />
+            <IconButton icon={Notification} circle type="stroked" />
+            <IconButton icon={Notification} circle type="stroked" color="primary" />
+            <IconButton icon={Notification} circle type="stroked" color="accent" />
+            <IconButton icon={Notification} circle type="stroked" color="danger" />
+            <IconButton icon={Notification} circle type="stroked" color="info" />
+            <IconButton icon={Notification} circle type="stroked" color="success" />
+            <IconButton icon={Notification} circle type="stroked" color="warning" />
+            <IconButton icon={Notification} circle type="stroked" disabled />
         </Flex>
 
         <Flex gap="4" alignItems="baseline">
-            <IconButton circle type="raised" size="small" icon={Notification} iconSize={16} />
-            <IconButton circle type="raised" size="default" icon={Notification} iconSize={20} />
-            <IconButton circle type="raised" size="large" icon={Notification} iconSize={24} />
-            <IconButton circle type="raised" size="extra-large" icon={Notification} iconSize={32} />
+            <IconButton circle type="raised" size="extra-small" icon={Notification} />
+            <IconButton circle type="raised" size="small" icon={Notification} />
+            <IconButton circle type="raised" size="default" icon={Notification} />
+            <IconButton circle type="raised" size="large" icon={Notification} />
+            <IconButton circle type="raised" size="extra-large" icon={Notification} />
         </Flex>
     </Flex>
 </Flex>

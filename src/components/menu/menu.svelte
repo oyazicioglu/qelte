@@ -42,7 +42,6 @@
     export let circledIcon = false;
     export let useIconButton = true;
     export let icon: any = undefined;
-    export let iconSize: IconSize = 16;
 
     let showList = false;
 
@@ -100,13 +99,13 @@
     class:rounded
     style={styles}>
     {#if useIconButton}
-        <IconButton circle={circledIcon} on:click={toggleMenu} {type} {color} {iconSize} {disabled} {icon} />
+        <IconButton circle={circledIcon} on:click={toggleMenu} {type} {color} {size} {disabled} {icon} />
     {/if}
 
     {#if !useIconButton}
         <Button on:click={toggleMenu} {type} {color} {size} {disabled} {rounded} gap="2">
             {#if icon}
-                <Icon {type} color={icon && !text ? color : 'inherit'} size={iconSize} {disabled} {icon} />
+                <Icon {type} color={icon && !text ? color : 'inherit'} {size} {disabled} {icon} />
             {/if}
 
             {#if text}

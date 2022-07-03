@@ -67,7 +67,26 @@
         <Title>Data Table</Title>
         <Divider />
     </Flex>
-    <Flex gap="5" direction="column" alignItems="flex-start">
-        <DataTable bind:rows bind:headers />
-    </Flex>
+    <div class="table-up-container">
+        <div class="table-down-container">
+            <DataTable bind:rows bind:headers />
+        </div>
+    </div>
 </Flex>
+
+<style lang="scss">
+    .table-up-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .table-down-container {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0;
+        bottom: 0;
+        top: 0;
+    }
+</style>

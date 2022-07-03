@@ -13,21 +13,22 @@
     </Flex>
     <Flex gap="10" direction="column">
         <Flex gap="5">
-            <Icon iconName="bell" icon={Add} size={16}>/></Icon>
-            <Icon color="inherit" icon={Add} size={16}>/></Icon>
-            <Icon color="primary" icon={Add} size={16}>/></Icon>
-            <Icon color="accent" icon={Add} size={16}>/></Icon>
-            <Icon color="danger" icon={Add} size={16}>/></Icon>
-            <Icon color="info" icon={Add} size={16}>/></Icon>
-            <Icon color="success" icon={Add} size={16}>/></Icon>
-            <Icon color="warning" icon={Add} size={16}>/></Icon>
+            <Icon iconName="bell" icon={Add} size="default">/></Icon>
+            <Icon color="inherit" icon={Add} size="default">/></Icon>
+            <Icon color="primary" icon={Add} size="default">/></Icon>
+            <Icon color="accent" icon={Add} size="default">/></Icon>
+            <Icon color="danger" icon={Add} size="default">/></Icon>
+            <Icon color="info" icon={Add} size="default">/></Icon>
+            <Icon color="success" icon={Add} size="default">/></Icon>
+            <Icon color="warning" icon={Add} size="default">/></Icon>
         </Flex>
 
         <Flex gap="5" alignItems="baseline">
-            <Icon icon={Add} size={16}>/></Icon>
-            <Icon icon={Add} size={20} />
-            <Icon icon={Add} size={24} />
-            <Icon icon={Add} size={26} />
+            <Icon icon={Add} size="extra-small">/></Icon>
+            <Icon icon={Add} size="small">/></Icon>
+            <Icon icon={Add} size="default" />
+            <Icon icon={Add} size="large" />
+            <Icon icon={Add} size="extra-large" />
         </Flex>
     </Flex>
 </Flex>

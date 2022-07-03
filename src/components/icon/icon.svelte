@@ -9,7 +9,7 @@
 
     $: iconSize =
         size === 'extra-small'
-            ? 16
+            ? 12
             : size === 'small'
             ? 16
             : size === 'default'
@@ -20,7 +20,9 @@
             ? 32
             : 16;
 
-    $: classes = [`qei-icon`, `color-${color}`, disabled && `disabled`, $$restProps.class].filter(Boolean).join(' ');
+    $: classes = [`qei-icon`, `color-${color}`, disabled && `disabled`, size && `size-${size}`, $$restProps.class]
+        .filter(Boolean)
+        .join(' ');
     $: styles = [$$restProps.style].filter(Boolean).join(';');
 </script>
 

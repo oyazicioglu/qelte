@@ -1,54 +1,41 @@
 @use '../styles/theme/theme';
 
 .qei-data-table {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	text-align: left;
-	font-size: 0.85rem;
-	height: 100%;
+    overflow-x: auto;
+    text-align: left;
+    max-width: 100%;
 
-	&.has-divider {
-		table td {
-			border-bottom: 1px solid map-get($map: theme.$themeColors, $key: 'divider');
-		}
-	}
+    &.has-divider {
+        table td {
+            border-bottom: 1px solid map-get($map: theme.$themeColors, $key: 'divider');
+        }
+    }
 
-	&.use-strip {
-		.odd-row {
-			background-color: map-get($map: theme.$themeColors, $key: 'divider');
-		}
-	}
+    &.use-strip {
+        .odd-row {
+            background-color: map-get($map: theme.$themeColors, $key: 'divider');
+        }
+    }
 
-	.table-container {
-		position: relative;
-		overflow: auto;
-		flex-grow: 1;
-		max-height: 100%;
-		max-width: 100%;
-		min-width: 100%;
-	}
+    table {
+        border-spacing: 0;
+        min-width: 100%;
+        width: 100%;
+    }
 
-	table {
-		border-spacing: 0;
-		min-width: 100%;
-	}
+    table th {
+        padding: 6px 12px;
 
-	table th {
-		padding: 6px 12px;
+        &.align-left {
+            text-align: left;
+        }
 
-		&.align-left {
-			text-align: left;
-		}
+        &.align-center {
+            text-align: center;
+        }
 
-		&.align-center {
-			text-align: center;
-		}
-
-		&.align-right {
-			text-align: right;
-		}
-	}
+        &.align-right {
+            text-align: right;
+        }
+    }
 }
