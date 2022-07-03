@@ -21,9 +21,14 @@
     import { ListModel } from '../list/ListModel.js';
     import Span from '../span/span.svelte';
     import TableContainer from './table-container.svelte';
+    import Pagination from '../pagination/pagination.svelte';
+    import FlexItem from '../flex/flex-item.svelte';
+    import Grid from '../grid/grid.svelte';
+    import Flex from '../flex/flex.svelte';
 
     export let showSearch = true;
     export let showFilters = true;
+    export let showPagination = true;
     export let showColumnSearch = true;
     export let showColumnVisibility = true;
     export let ref = undefined;
@@ -33,8 +38,8 @@
     export let headers: HeaderType[];
     export let rows: RowType[];
     export let list: ListModel = new ListModel([
-        { text: 'Text1', value: 'Value 1', active: true, id: '1' },
-        { text: 'Text2', value: 'Value 2', active: true, id: '2' },
+        { text: 'Text1', value: 'Value 1', active: true, id: '1', icon: View },
+        { text: 'Text2', value: 'Value 2', active: true, id: '2', icon: Search },
     ]);
 
     let waiting = true;
@@ -45,8 +50,6 @@
     let table = new DataTableElement();
     table.headersFromJSON(headers);
     table.rowsFromJSON(rows);
-
-    table.rowsToJSON();
 
     const tableClasses = [`qei-data-table`, hasDivider && `has-divider`, condense && `condense`, useStrip && `use-strip`]
         .filter(Boolean)
@@ -61,75 +64,159 @@
     });
 </script>
 
-<div {id} bind:this={ref} {...$$restProps} class={tableClasses} style={$$restProps.style}>
-    {#if waiting}
-        <Preloader showBackground size="default" style="margin-bottom:0;" />
-    {/if}
-
-    <Row direction="row" gap={'1'} alignItems="stretch">
-        {#if showSearch}
-            <Column grow={1}>
-                <SearchInput bind:value={searchValue} label="Search"><IconButton on:click={globalSearch} icon={Search} /></SearchInput>
-            </Column>
+<Grid style="width: 100%; height:100%">
+    <div {id} bind:this={ref} {...$$restProps} class={tableClasses} style={$$restProps.style}>
+        {#if waiting}
+            <Preloader showBackground size="default" style="margin-bottom:0;" />
         {/if}
-        {#if showFilters}
-            <Column grow={0}>
-                <Menu type="flat" rounded icon={Filter} listModel={list} useIconButton position="bottom-right" />
-            </Column>
-        {/if}
-    </Row>
 
-    {#if table && table.rows && table.rows.length === 0}
-        <Row wrap="nowrap" justifyContent="center" alignItems="center">
-            <Column>
-                <Title heading="6" color="secondary">No record found!</Title>
-            </Column>
+        <Row direction="row" gap={'1'} alignItems="stretch">
+            {#if showSearch}
+                <Column grow={1}>
+                    <SearchInput bind:value={searchValue} label="Search"><IconButton on:click={globalSearch} icon={Search} /></SearchInput>
+                </Column>
+            {/if}
+            {#if showFilters}
+                <Column grow={0}>
+                    <Menu type="flat" rounded icon={Filter} listModel={list} useIconButton position="bottom-right" />
+                </Column>
+            {/if}
         </Row>
-    {:else}
-        <TableContainer>
-            <table>
-                {#if table.headers}
-                    <thead>
-                        <TableHead {condense}>
-                            {#each table.headers as header, i}
-                                <TableHeadCell sortable={header.sortable} align={header.align}>
-                                    <Row gap="4" wrap="nowrap" alignItems="center" justifyContent="space-between">
-                                        <Column grow={1}><Span>{header.value}</Span></Column>
-                                        {#if showColumnVisibility}
-                                            <Column>
-                                                <IconButton
-                                                    on:click={() => {
-                                                        table.hideColumn(header);
-                                                    }}
-                                                    size="small"
-                                                    icon={View} />
-                                            </Column>
-                                        {/if}
-                                        {#if showColumnSearch}
-                                            <Column>
-                                                <IconButton icon={Search} size="small" />
-                                            </Column>
-                                        {/if}
-                                    </Row>
-                                </TableHeadCell>
-                            {/each}
-                        </TableHead>
-                    </thead>
-                {/if}
-                {#if table.rows}
-                    <tbody>
-                        {#each table.rows as row, j}
-                            <TableRow {condense} {useStrip} {hasDivider} odd={j % 2 === 1}>
-                                {#each row.items as cell, k}
-                                    <TableCell align={table.headers[k].align}>
-                                        <Span>{cell.value}</Span>
-                                    </TableCell>
+
+        {#if table && table.rows && table.rows.length === 0}
+            <Row wrap="nowrap" justifyContent="center" alignItems="center">
+                <Column>
+                    <Title heading="6" color="secondary">No record found!</Title>
+                </Column>
+            </Row>
+        {:else}
+            <FlexItem grow={1} style="overflow-x:auto; overflow-y:auto">
+                <table style="width:100%; height:100%">
+                    {#if table.headers}
+                        <thead>
+                            <TableHead {condense}>
+                                {#each table.headers as header, i}
+                                    <TableHeadCell sortable={header.sortable} align={header.align}>
+                                        <Row gap="4" wrap="nowrap" alignItems="center" justifyContent="space-between">
+                                            <Column grow={1}><Span>{header.value}</Span></Column>
+                                            {#if showColumnVisibility}
+                                                <Column>
+                                                    <IconButton
+                                                        on:click={() => {
+                                                            table.hideColumn(header);
+                                                        }}
+                                                        size="small"
+                                                        icon={View} />
+                                                </Column>
+                                            {/if}
+                                            {#if showColumnSearch}
+                                                <Column>
+                                                    <IconButton icon={Search} size="small" />
+                                                </Column>
+                                            {/if}
+                                        </Row>
+                                    </TableHeadCell>
                                 {/each}
-                            </TableRow>
-                        {/each}
-                    </tbody>
-                {/if}
-            </table>
-        </TableContainer>
-    {/if}
-</div>
+                            </TableHead>
+                        </thead>
+                    {/if}
+                    {#if table.rows}
+                        <tbody>
+                            {#each table.rows as row, j}
+                                <TableRow {condense} {useStrip} {hasDivider} odd={j % 2 === 1}>
+                                    {#each row.items as cell, k}
+                                        <TableCell align={table.headers[k].align}>
+                                            <Span>{cell.value}</Span>
+                                        </TableCell>
+                                    {/each}
+                                </TableRow>
+                            {/each}
+                        </tbody>
+                    {/if}
+                </table>
+            </FlexItem>
+        {/if}
+        {#if showPagination}
+            <FlexItem>
+                <Pagination />
+            </FlexItem>
+        {/if}
+    </div>
+</Grid>
+<!--  <div {id} bind:this={ref} {...$$restProps} class={tableClasses} style={$$restProps.style}>
+        {#if waiting}
+            <Preloader showBackground size="default" style="margin-bottom:0;" />
+        {/if}
+
+        <Row direction="row" gap={'1'} alignItems="stretch">
+            {#if showSearch}
+                <Column grow={1}>
+                    <SearchInput bind:value={searchValue} label="Search"><IconButton on:click={globalSearch} icon={Search} /></SearchInput>
+                </Column>
+            {/if}
+            {#if showFilters}
+                <Column grow={0}>
+                    <Menu type="flat" rounded icon={Filter} listModel={list} useIconButton position="bottom-right" />
+                </Column>
+            {/if}
+        </Row>
+
+        {#if table && table.rows && table.rows.length === 0}
+            <Row wrap="nowrap" justifyContent="center" alignItems="center">
+                <Column>
+                    <Title heading="6" color="secondary">No record found!</Title>
+                </Column>
+            </Row>
+        {:else}
+            <FlexItem grow={1}>
+                <TableContainer>
+                    <table>
+                        {#if table.headers}
+                            <thead>
+                                <TableHead {condense}>
+                                    {#each table.headers as header, i}
+                                        <TableHeadCell sortable={header.sortable} align={header.align}>
+                                            <Row gap="4" wrap="nowrap" alignItems="center" justifyContent="space-between">
+                                                <Column grow={1}><Span>{header.value}</Span></Column>
+                                                {#if showColumnVisibility}
+                                                    <Column>
+                                                        <IconButton
+                                                            on:click={() => {
+                                                                table.hideColumn(header);
+                                                            }}
+                                                            size="small"
+                                                            icon={View} />
+                                                    </Column>
+                                                {/if}
+                                                {#if showColumnSearch}
+                                                    <Column>
+                                                        <IconButton icon={Search} size="small" />
+                                                    </Column>
+                                                {/if}
+                                            </Row>
+                                        </TableHeadCell>
+                                    {/each}
+                                </TableHead>
+                            </thead>
+                        {/if}
+                        {#if table.rows}
+                            <tbody>
+                                {#each table.rows as row, j}
+                                    <TableRow {condense} {useStrip} {hasDivider} odd={j % 2 === 1}>
+                                        {#each row.items as cell, k}
+                                            <TableCell align={table.headers[k].align}>
+                                                <Span>{cell.value}</Span>
+                                            </TableCell>
+                                        {/each}
+                                    </TableRow>
+                                {/each}
+                            </tbody>
+                        {/if}
+                    </table>
+                </TableContainer>
+            </FlexItem>
+            {#if showPagination}
+                <Pagination />
+            {/if}
+        {/if}
+    </div> -->

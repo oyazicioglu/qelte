@@ -1,9 +1,13 @@
 @use '../styles/theme/theme';
 
 .qei-data-table {
-    overflow-x: auto;
-    text-align: left;
+    position: absolute;
     max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 
     &.has-divider {
         table td {
@@ -20,7 +24,6 @@
     table {
         border-spacing: 0;
         min-width: 100%;
-        width: 100%;
     }
 
     table th {

@@ -7,7 +7,7 @@
     import Span from '../span/span.svelte';
     import Paper from '../paper/paper.svelte';
     import { getContext, onMount } from 'svelte';
-    import type { ISelectItem, SelectModel } from './SelectModel';
+    import { SelectModel, type ISelectItem } from './SelectModel';
     import Icon from '../icon/icon.svelte';
     import { formContext, type IFormContext } from '../form/form.svelte';
     import type { IValidation, IValidationResult } from '../form/validations/IValidation';
@@ -50,6 +50,7 @@
 
     const context = getContext<IFormContext>(formContext);
 
+    selectModel = new SelectModel([]);
     if (type === 'stroked') {
         type = 'basic';
     }
@@ -95,10 +96,12 @@
 
     onMount(async () => {
         activeItem = selectModel.getAciveItem();
-        element = new FormElement(ref, 'select', name, activeItem.value, validations);
+        if (activeItem) {
+            element = new FormElement(ref, 'select', name, activeItem.value, validations);
 
-        if (context) {
-            context.registerElement(element);
+            if (context) {
+                context.registerElement(element);
+            }
         }
 
         loaded = true;
