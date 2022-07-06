@@ -25,6 +25,7 @@
     import FlexItem from '../flex/flex-item.svelte';
     import Grid from '../grid/grid.svelte';
     import Flex from '../flex/flex.svelte';
+    import Divider from '../divider/divider.svelte';
 
     export let showSearch = true;
     export let showFilters = true;
@@ -38,7 +39,7 @@
     export let headers: HeaderType[];
     export let rows: RowType[];
     export let list: ListModel = new ListModel([
-        { text: 'Text1', value: 'Value 1', active: true, id: '1', icon: View },
+        { text: 'Text1', value: 'Value 1', active: true, id: '1', icon: View, component: Divider },
         { text: 'Text2', value: 'Value 2', active: true, id: '2', icon: Search },
     ]);
 

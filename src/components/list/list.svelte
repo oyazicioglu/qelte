@@ -29,12 +29,12 @@
     }
 
     const changeItem = (item: IListItem) => {
-        listModel.setActiveItem(item);
-        activeItem = listModel.getAciveItem();
+        listModel.activeItem = item;
+        activeItem = listModel.activeItem;
     };
 
     onMount(async () => {
-        activeItem = listModel.getAciveItem();
+        activeItem = listModel.activeItem;
     });
 
     $: classes = [`qei-list`, !disabled && `color-${color}`, `type-${type}`, `size-${size}`, rounded && `rounded`, $$restProps.class]
@@ -52,26 +52,30 @@
         elevation={type === 'raised' ? '3' : '0'}
         class="pl-{paddingHorizontal} pr-{paddingHorizontal} pt-{paddingVertical} pb-{paddingVertical}">
         <Flex wrap="nowrap" {gap} {justifyContent} {alignItems} {direction}>
-            {#each listModel.getItems() as item}
-                <Button
-                    on:click={() => {
-                        changeItem(item);
-                    }}
-                    gap="2"
-                    type={type === 'raised' ? 'flat' : type}
-                    {color}
-                    fullWidth
-                    {justifyContent}
-                    active={item === activeItem}>
-                    {#if item.component}
-                        <svelte:component this={item.component} />
-                    {:else}
-                        {#if item.icon}
-                            <Icon icon={item.icon} {size} />
+            {#each listModel.items as item}
+                {#if item.component}
+                    <svelte:component this={item.component} />
+                {:else}
+                    <Button
+                        on:click={() => {
+                            changeItem(item);
+                        }}
+                        gap="2"
+                        type={type === 'raised' ? 'flat' : type}
+                        {color}
+                        fullWidth
+                        {justifyContent}
+                        active={item === activeItem}>
+                        {#if item.component}
+                            <svelte:component this={item.component} />
+                        {:else}
+                            {#if item.icon}
+                                <Icon icon={item.icon} {size} />
+                            {/if}
+                            <Span>{item.text ? item.text : item.value}</Span>
                         {/if}
-                        <Span>{item.text ? item.text : item.value}</Span>
-                    {/if}
-                </Button>
+                    </Button>
+                {/if}
             {/each}
         </Flex>
     </Paper>

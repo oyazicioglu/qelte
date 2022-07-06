@@ -7,7 +7,6 @@
     import Span from '../span/span.svelte';
     import Paper from '../paper/paper.svelte';
     import { getContext, onMount } from 'svelte';
-    import { SelectModel, type ISelectItem } from './SelectModel';
     import Icon from '../icon/icon.svelte';
     import { formContext, type IFormContext } from '../form/form.svelte';
     import type { IValidation, IValidationResult } from '../form/validations/IValidation';
@@ -18,6 +17,7 @@
     import IconButton from '../icon-button/icon-button.svelte';
     import { RequiredValidation } from '../form/validations/RequiredValidation';
     import CloseSvelte from 'carbon-icons-svelte/lib/Close.svelte';
+    import type { ISelectItem, SelectModel } from './SelectModel';
 
     export let size: BaseSize = 'default';
     export let rounded = false;
@@ -50,7 +50,6 @@
 
     const context = getContext<IFormContext>(formContext);
 
-    selectModel = new SelectModel([]);
     if (type === 'stroked') {
         type = 'basic';
     }
@@ -78,8 +77,8 @@
     };
 
     const changeItem = (item: ISelectItem) => {
-        selectModel.setActiveItem(item);
-        activeItem = selectModel.getAciveItem();
+        selectModel.activeItem = item;
+        activeItem = item;
         updateValue();
     };
 
@@ -95,7 +94,7 @@
     };
 
     onMount(async () => {
-        activeItem = selectModel.getAciveItem();
+        activeItem = selectModel?.activeItem;
         if (activeItem) {
             element = new FormElement(ref, 'select', name, activeItem.value, validations);
 
@@ -126,7 +125,7 @@
         showList = false;
     }}>
     {#if activeItem && label}
-        <Span color="secondary">{label}</Span>
+        <span class="label">{label}</span>
     {/if}
     <Button {size} gap="2" {disabled} type="basic" {justifyContent} fullWidth on:click={toggleList}
         >{#if activeItem && activeItem.icon}
@@ -150,27 +149,31 @@
                 elevation={type === 'raised' ? '3' : '0'}
                 class="pl-{paddingHorizontal} pr-{paddingHorizontal} pt-{paddingVertical} pb-{paddingVertical}">
                 <Flex wrap="nowrap" {gap} {justifyContent} {alignItems} {direction}>
-                    {#each selectModel.getItems() as item}
-                        <Button
-                            on:click={() => {
-                                changeItem(item);
-                            }}
-                            gap="2"
-                            type={type === 'raised' ? 'flat' : type}
-                            {color}
-                            fullWidth
-                            {justifyContent}
-                            {size}
-                            active={item === activeItem}>
-                            {#if item.component}
-                                <svelte:component this={item.component} />
-                            {:else}
-                                {#if item.icon}
-                                    <Icon icon={item.icon} {size} />
+                    {#each selectModel.items as item}
+                        {#if item.component}
+                            <svelte:component this={item.component} />
+                        {:else}
+                            <Button
+                                on:click={() => {
+                                    changeItem(item);
+                                }}
+                                gap="2"
+                                type={type === 'raised' ? 'flat' : type}
+                                {color}
+                                fullWidth
+                                {justifyContent}
+                                {size}
+                                active={item === activeItem}>
+                                {#if item.component}
+                                    <svelte:component this={item.component} />
+                                {:else}
+                                    {#if item.icon}
+                                        <Icon icon={item.icon} {size} />
+                                    {/if}
+                                    <Span {size}>{item.text}</Span>
                                 {/if}
-                                <Span {size}>{item.text}</Span>
-                            {/if}
-                        </Button>
+                            </Button>
+                        {/if}
                     {/each}
                 </Flex>
             </Paper>

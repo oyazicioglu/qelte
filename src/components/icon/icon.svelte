@@ -27,5 +27,7 @@
 </script>
 
 <div bind:this={ref} {...$$restProps} class={classes} style={styles}>
-    <svelte:component this={icon} size={iconSize} />
+    {#if icon}
+        <svelte:component this={icon} size={iconSize} />
+    {/if}
 </div>

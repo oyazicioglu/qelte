@@ -7,36 +7,37 @@ export interface IListItem {
     component?: any;
     text?: string;
     icon?: any;
+    closeOnClick: boolean;
 }
 
 export interface IListModel {
-    setItems(items: IListItem[]): void;
-    getItems(): IListItem[];
-    getAciveItem(): IListItem;
+    set items(items: IListItem[]);
+    get items(): IListItem[];
+    get activeItem(): IListItem;
+    set activeItem(item: IListItem);
     addItem(item: IListItem): void;
     findActiveItem(): IListItem;
-    setActiveItem(item: IListItem): void;
 }
 
 export class ListModel implements IListModel {
-    private items: IListItem[];
-    private activeItem: IListItem;
+    private _items: IListItem[];
+    private _activeItem: IListItem;
 
     constructor(items: IListItem[] = []) {
         this.items = items;
-        this.setActiveItem(this.findActiveItem());
+        this.activeItem = this.findActiveItem();
     }
 
-    setItems(items: IListItem[]) {
-        this.items = items;
+    set items(items: IListItem[]) {
+        this._items = items;
     }
 
-    getItems() {
-        return this.items;
+    get items() {
+        return this._items;
     }
 
-    getAciveItem() {
-        return this.activeItem;
+    get activeItem() {
+        return this._activeItem;
     }
 
     addItem(item: IListItem) {
@@ -51,7 +52,7 @@ export class ListModel implements IListModel {
         return this.items.find((i) => i.active);
     }
 
-    setActiveItem(item: IListItem) {
+    set activeItem(item: IListItem) {
         const itemIndex = this.getItemIndex(item);
         if (itemIndex !== -1) {
             if (this.activeItem) {
@@ -59,7 +60,7 @@ export class ListModel implements IListModel {
             }
 
             item.active = true;
-            this.activeItem = item;
+            this._activeItem = item;
             this.items[itemIndex] = item;
         }
     }

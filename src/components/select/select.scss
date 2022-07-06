@@ -2,108 +2,108 @@
 @use './mixins';
 
 .qei-select {
-	position: relative;
-	border-bottom: 1px solid map-get($map: theme.$themeColors, $key: 'divider');
-	background-color: map-get($map: theme.$themeColors, $key: 'paper');
+    position: relative;
+    border-bottom: 1px solid map-get($map: theme.$themeColors, $key: 'divider');
+    background-color: map-get($map: theme.$themeColors, $key: 'paper');
 
-	&:not(.disabled):hover {
-		border-bottom: 1px solid map-get($map: theme.$primaryColors, $key: 'bg');
-	}
+    &:not(.disabled):hover {
+        border-bottom: 1px solid map-get($map: theme.$primaryColors, $key: 'bg');
+    }
 
-	.list-container {
-		// visibility: hidden;
-		position: absolute;
-		min-width: 100%;
-		z-index: 10;
-		/* 
-		&.showList {
-			visibility: visible;
-		} */
-	}
+    .list-container {
+        visibility: hidden;
+        position: absolute;
+        min-width: 100%;
+        z-index: 10;
 
-	& > .qei-text {
-		color: map-get($map: theme.$themeColors, $key: 'secondaryText');
-		transition: all 200ms ease-in-out;
-		position: absolute;
-		width: 100%;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
+        &.showList {
+            visibility: visible;
+        }
+    }
 
-	&:not(.disabled):active > .qei-text,
-	&:not(.disabled):hover > .qei-text {
-		color: map-get($map: theme.$primaryColors, $key: 'bg');
-	}
+    & > .label {
+        color: map-get($map: theme.$themeColors, $key: 'secondaryText');
+        transition: all 200ms ease-in-out;
+        position: absolute;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-	&.disabled.has-selected > .qei-text,
-	.disabled > .qei-text {
-		color: map-get($map: theme.$themeColors, $key: 'disabled');
-		cursor: default;
-	}
+    &:not(.disabled):active > .label,
+    &:not(.disabled):hover > .label {
+        color: map-get($map: theme.$primaryColors, $key: 'bg');
+    }
 
-	&.rounded.size-extra-small,
-	&.rounded.size-extra-small > .qei-button > .hover {
-		@include mixins.round('extra-small');
-	}
+    &.disabled.has-selected > .label,
+    .disabled > .label {
+        color: map-get($map: theme.$themeColors, $key: 'disabled');
+        cursor: default;
+    }
 
-	&.rounded.size-small,
-	&.rounded.size-small > .qei-button > .hover {
-		@include mixins.round('small');
-	}
+    &.rounded.size-extra-small,
+    &.rounded.size-extra-small > .qei-button > .hover {
+        @include mixins.round('extra-small');
+    }
 
-	&.rounded.size-default,
-	&.rounded.size-default > .qei-button > .hover {
-		@include mixins.round('default');
-	}
+    &.rounded.size-small,
+    &.rounded.size-small > .qei-button > .hover {
+        @include mixins.round('small');
+    }
 
-	&.rounded.size-large,
-	&.rounded.size-large > .qei-button > .hover {
-		@include mixins.round('large');
-	}
+    &.rounded.size-default,
+    &.rounded.size-default > .qei-button > .hover {
+        @include mixins.round('default');
+    }
 
-	&.rounded.size-extra-large,
-	&.rounded.size-extra-large > .qei-button > .hover {
-		@include mixins.round('extra-large');
-	}
+    &.rounded.size-large,
+    &.rounded.size-large > .qei-button > .hover {
+        @include mixins.round('large');
+    }
 
-	&.has-selected.size-extra-small > .qei-text {
-		@include mixins.selectedItemLabel('extra-small');
-	}
+    &.rounded.size-extra-large,
+    &.rounded.size-extra-large > .qei-button > .hover {
+        @include mixins.round('extra-large');
+    }
 
-	&.has-selected.size-small > .qei-text {
-		@include mixins.selectedItemLabel('small');
-	}
+    &.has-selected.size-extra-small > .label {
+        @include mixins.selectedItemLabel('extra-small');
+    }
 
-	&.has-selected.size-default > .qei-text {
-		@include mixins.selectedItemLabel('default');
-	}
+    &.has-selected.size-small > .label {
+        @include mixins.selectedItemLabel('small');
+    }
 
-	&.has-selected.size-large > .qei-text {
-		@include mixins.selectedItemLabel('large');
-	}
+    &.has-selected.size-default > .label {
+        @include mixins.selectedItemLabel('default');
+    }
 
-	&.has-selected.size-extra-large > .qei-text {
-		@include mixins.selectedItemLabel('extra-large');
-	}
+    &.has-selected.size-large > .label {
+        @include mixins.selectedItemLabel('large');
+    }
 
-	&:not(.has-selected).size-extra-small > .qei-text {
-		@include mixins.unselectedItemLabel('extra-small');
-	}
+    &.has-selected.size-extra-large > .label {
+        @include mixins.selectedItemLabel('extra-large');
+    }
 
-	&:not(.has-selected).size-small > .qei-text {
-		@include mixins.unselectedItemLabel('small');
-	}
+    &:not(.has-selected).size-extra-small > .label {
+        @include mixins.unselectedItemLabel('extra-small');
+    }
 
-	&:not(.has-selected).size-default > .qei-text {
-		@include mixins.unselectedItemLabel('default');
-	}
+    &:not(.has-selected).size-small > .label {
+        @include mixins.unselectedItemLabel('small');
+    }
 
-	&:not(.has-selected).size-large > .qei-text {
-		@include mixins.unselectedItemLabel('large');
-	}
+    &:not(.has-selected).size-default > .label {
+        @include mixins.unselectedItemLabel('default');
+    }
 
-	&:not(.has-selected).size-extra-large > .qei-text {
-		@include mixins.unselectedItemLabel('extra-large');
-	}
+    &:not(.has-selected).size-large > .label {
+        @include mixins.unselectedItemLabel('large');
+    }
+
+    &:not(.has-selected).size-extra-large > .label {
+        @include mixins.unselectedItemLabel('extra-large');
+    }
 }

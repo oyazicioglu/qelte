@@ -48,12 +48,12 @@
     const id = createUId();
 
     const changeItem = (item: IListItem) => {
-        listModel.setActiveItem(item);
-        activeItem = listModel.getAciveItem();
+        listModel.activeItem = item;
+        activeItem = listModel.activeItem;
     };
 
     onMount(async () => {
-        activeItem = listModel.getAciveItem();
+        activeItem = listModel.activeItem;
     });
 
     const toggleMenu = () => {
@@ -123,28 +123,34 @@
                 elevation={hasShadow ? '3' : '0'}
                 class="pl-{paddingHorizontal} pr-{paddingHorizontal} pt-{paddingVertical} pb-{paddingVertical}">
                 <Flex wrap="nowrap" {gap} {justifyContent} {alignItems} {direction}>
-                    {#each listModel.getItems() as item}
-                        <Button
-                            on:click={() => {
-                                changeItem(item);
-                                showList = false;
-                            }}
-                            gap="2"
-                            type={type === 'raised' || type === 'stroked' ? 'flat' : type}
-                            {color}
-                            fullWidth
-                            {justifyContent}
-                            {size}
-                            active={item === activeItem}>
-                            {#if item.component}
+                    {#each listModel.items as item}
+                        {#if item.component}
+                            <Paper padding="6">
                                 <svelte:component this={item.component} />
-                            {:else}
-                                {#if item.icon}
-                                    <Icon icon={item.icon} {size} />
+                            </Paper>
+                        {:else}
+                            <Button
+                                on:click={() => {
+                                    changeItem(item);
+                                    showList = false;
+                                }}
+                                gap="2"
+                                type={type === 'raised' || type === 'stroked' ? 'flat' : type}
+                                {color}
+                                fullWidth
+                                {justifyContent}
+                                {size}
+                                active={item === activeItem}>
+                                {#if item.component}
+                                    <svelte:component this={item.component} />
+                                {:else}
+                                    {#if item.icon}
+                                        <Icon icon={item.icon} {size} />
+                                    {/if}
+                                    <Span {size}>{item.text ? item.text : item.value}</Span>
                                 {/if}
-                                <Span {size}>{item.text ? item.text : item.value}</Span>
-                            {/if}
-                        </Button>
+                            </Button>
+                        {/if}
                     {/each}
                 </Flex>
             </Paper>

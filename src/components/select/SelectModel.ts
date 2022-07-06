@@ -8,24 +8,25 @@ export interface ISelectItem {
 }
 
 export class SelectModel {
-    private items: ISelectItem[];
-    private activeItem: ISelectItem;
+    private _items: ISelectItem[];
+    private _activeItem: ISelectItem;
 
     constructor(items: ISelectItem[] = []) {
         this.items = items;
-        this.setActiveItem(this.findActiveItem());
+        this.activeItem = this.findActiveItem();
     }
 
-    setItems(items: ISelectItem[]) {
-        this.items = items;
+    set items(items: ISelectItem[]) {
+        this._items = items;
+        console.log(this._items);
     }
 
-    getItems() {
-        return this.items;
+    get items() {
+        return this._items;
     }
 
-    getAciveItem() {
-        return this.activeItem;
+    get activeItem() {
+        return this._activeItem;
     }
 
     addItem(item: ISelectItem) {
@@ -33,14 +34,14 @@ export class SelectModel {
             this.activeItem = item;
         }
 
-        this.items.push(item);
+        this._items.push(item);
     }
 
     findActiveItem() {
         return this.items.find((i) => i.active);
     }
 
-    setActiveItem(item: ISelectItem) {
+    set activeItem(item: ISelectItem) {
         const itemIndex = this.getItemIndex(item);
         if (itemIndex !== -1) {
             if (this.activeItem) {
@@ -48,7 +49,7 @@ export class SelectModel {
             }
 
             item.active = true;
-            this.activeItem = item;
+            this._activeItem = item;
             this.items[itemIndex] = item;
         }
     }
