@@ -7,7 +7,7 @@
     import FlexItem from '../flex/flex-item.svelte';
     import IconButton from '../icon-button/icon-button.svelte';
     import Icon from '../icon/icon.svelte';
-    import type { BaseSize, IconSize } from '../types.js';
+    import type { BaseColor, BaseSize, IconSize } from '../types.js';
     import type { IValidation, IValidationResult } from '../form/validations/IValidation.js';
     import type { IFormElement } from '../form/IFormElement.js';
     import { ValidationDirective } from '../form/validations/ValidationDirective.js';
@@ -15,6 +15,7 @@
     import Close from 'carbon-icons-svelte/lib/Close.svelte';
 
     export let size: BaseSize = 'default';
+    export let color: BaseColor = 'inherit';
     export let rounded = false;
     export let disabled = false;
     export let ref = undefined;
@@ -55,7 +56,14 @@
         }
     };
 
-    $: classes = [`qei-text-input`, disabled && `disabled`, hasBackground && `has-background`, `size-${size}`, $$restProps.class]
+    $: classes = [
+        `qei-text-input`,
+        disabled && `disabled`,
+        `color-${color}`,
+        hasBackground && `has-background`,
+        `size-${size}`,
+        $$restProps.class,
+    ]
         .filter(Boolean)
         .join(' ');
 

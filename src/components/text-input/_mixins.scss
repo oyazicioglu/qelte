@@ -1,358 +1,361 @@
 @use 'sass:math';
 @use '../styles/theme/theme';
 @use '../styles/theme/variables' as globalVariables;
+@use '../styles/theme/typography';
 
 @mixin default() {
-	position: relative;
-	box-sizing: border-box;
-	height: 100%;
+    @include typography.textColors();
 
-	.label,
-	.hint {
-		position: absolute;
-		pointer-events: none;
-		left: 0;
-		top: 0;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-	}
+    position: relative;
+    box-sizing: border-box;
+    height: 100%;
 
-	.hint {
-		font-size: 0.7em;
-		color: map-get($map: theme.$themeColors, $key: 'secondaryText');
-	}
+    .label,
+    .hint {
+        position: absolute;
+        pointer-events: none;
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 
-	.label {
-		font-size: 0.75em;
-		z-index: 1;
-		cursor: default;
-		transition: all 0.2s;
-		left: 0;
-		right: 0;
-	}
+    .hint {
+        font-size: 0.7em;
+        color: map-get($map: theme.$themeColors, $key: 'secondaryText');
+    }
 
-	.required-dot {
-		width: 4px;
-		height: 4px;
-		position: absolute;
-		border-radius: 50%;
-		left: 0px;
-		top: 0px;
-		margin-top: 2px;
-		margin-left: 0;
-		background: map-get($map: theme.$alertColors, $key: 'danger');
-	}
+    .label {
+        font-size: 0.75em;
+        z-index: 1;
+        cursor: default;
+        transition: all 0.2s;
+        left: 0;
+        right: 0;
+    }
 
-	&.disabled {
-		cursor: default;
-		background-color: map-get($map: theme.$themeColors, $key: 'disabled');
-		.label,
-		.hint {
-			color: map-get($map: theme.$themeColors, $key: 'disabledText');
-		}
-		.qei-flex > .qei-icon {
-			color: map-get($map: theme.$themeColors, $key: 'inactiveIcon') !important;
-		}
-		.bottom-line {
-			background-color: map-get($map: theme.$themeColors, $key: 'disabledText') !important;
-		}
-	}
+    .required-dot {
+        width: 4px;
+        height: 4px;
+        position: absolute;
+        border-radius: 50%;
+        left: 0px;
+        top: 0px;
+        margin-top: 2px;
+        margin-left: 0;
+        background: map-get($map: theme.$alertColors, $key: 'danger');
+    }
 
-	&:not(.disabled).has-background {
-		background-color: map-get($map: theme.$themeColors, $key: 'paper');
-	}
+    &.disabled {
+        cursor: default;
+        background-color: map-get($map: theme.$themeColors, $key: 'disabled');
+        .label,
+        .hint {
+            color: map-get($map: theme.$themeColors, $key: 'disabledText');
+        }
+        .qei-flex > .qei-icon {
+            color: map-get($map: theme.$themeColors, $key: 'inactiveIcon') !important;
+        }
+        .bottom-line {
+            background-color: map-get($map: theme.$themeColors, $key: 'disabledText') !important;
+        }
+    }
 
-	&:not(.disabled).invalid {
-		.label,
-		.hint,
-		input::placeholder {
-			color: map-get($map: theme.$alertColors, $key: 'danger') !important;
-		}
-		input {
-			border-color: map-get($map: theme.$alertColors, $key: 'danger') !important;
-			color: map-get($map: theme.$alertColors, $key: 'danger') !important;
-		}
-		.qei-flex > .qei-icon {
-			color: map-get($map: theme.$alertColors, $key: 'danger') !important;
-		}
-		.bottom-line {
-			background-color: map-get($map: theme.$alertColors, $key: 'danger') !important;
-		}
-	}
+    &:not(.disabled).has-background {
+        background-color: map-get($map: theme.$themeColors, $key: 'paper');
+    }
 
-	.bottom-line {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		background-color: map-get($map: theme.$themeColors, $key: 'divider');
-		height: 1px;
-		transition: all 200ms ease-in-out;
-	}
+    &:not(.disabled).invalid {
+        .label,
+        .hint,
+        input::placeholder {
+            color: map-get($map: theme.$alertColors, $key: 'danger') !important;
+        }
+        input {
+            border-color: map-get($map: theme.$alertColors, $key: 'danger') !important;
+            color: map-get($map: theme.$alertColors, $key: 'danger') !important;
+        }
+        .qei-flex > .qei-icon {
+            color: map-get($map: theme.$alertColors, $key: 'danger') !important;
+        }
+        .bottom-line {
+            background-color: map-get($map: theme.$alertColors, $key: 'danger') !important;
+        }
+    }
+
+    .bottom-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: map-get($map: theme.$themeColors, $key: 'divider');
+        height: 1px;
+        transition: all 200ms ease-in-out;
+    }
 }
 
 @mixin inputDefault() {
-	input {
-		font-size: 1em;
-		height: 100%;
-		margin: 0;
-		position: relative;
-		outline: none;
-		border: none;
-		-webkit-appearance: none;
-		background-color: transparent;
-		color: map-get($map: theme.$themeColors, $key: 'primaryText');
-		transition: all 200ms ease-in-out;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		min-width: min-content;
-		filter: unset;
-		-webkit-filter: none;
-	}
+    input {
+        font-size: 1em;
+        height: 100%;
+        margin: 0;
+        position: relative;
+        outline: none;
+        border: none;
+        -webkit-appearance: none;
+        background-color: transparent;
+        color: map-get($map: theme.$themeColors, $key: 'primaryText');
+        transition: all 200ms ease-in-out;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        min-width: min-content;
+        filter: unset;
+        -webkit-filter: none;
+    }
 
-	input:placeholder-shown ~ .label {
-		font-size: 1em;
-		color: map-get($map: theme.$themeColors, $key: 'inactiveIcon');
-	}
+    input:placeholder-shown ~ .label {
+        font-size: 1em;
+        color: map-get($map: theme.$themeColors, $key: 'inactiveIcon');
+    }
 
-	input:focus ~ .bottom-line {
-		background-color: map-get($map: theme.$primaryColors, $key: 'bg');
-	}
+    input:focus ~ .bottom-line {
+        background-color: map-get($map: theme.$primaryColors, $key: 'bg');
+    }
 
-	input:placeholder-shown:focus ~ .label {
-		font-size: 0.75em;
-		color: map-get($map: theme.$primaryColors, $key: 'bg');
-		margin-left: 0 !important;
-	}
+    input:placeholder-shown:focus ~ .label {
+        font-size: 0.75em;
+        color: map-get($map: theme.$primaryColors, $key: 'bg');
+        margin-left: 0 !important;
+    }
 
-	&:not(.invalid) input:placeholder-shown:not(:focus) ~ .label {
-		color: map-get($map: theme.$themeColors, $key: 'inactiveIcon');
-	}
+    &:not(.invalid) input:placeholder-shown:not(:focus) ~ .label {
+        color: map-get($map: theme.$themeColors, $key: 'inactiveIcon');
+    }
 
-	input:not(:placeholder-shown) ~ .label {
-		color: map-get($map: theme.$themeColors, $key: 'secondaryText');
-	}
+    input:not(:placeholder-shown) ~ .label {
+        color: map-get($map: theme.$themeColors, $key: 'secondaryText');
+    }
 
-	input:not(:placeholder-shown):focus ~ .label {
-		color: map-get($map: theme.$primaryColors, $key: 'bg');
-		margin-left: 0 !important;
-	}
+    input:not(:placeholder-shown):focus ~ .label {
+        color: map-get($map: theme.$primaryColors, $key: 'bg');
+        margin-left: 0 !important;
+    }
 
-	input:not(:placeholder-shown):not(:focus) ~ .label {
-		color: map-get($map: theme.$themeColors, $key: 'secondaryText');
-		margin-left: 0 !important;
+    input:not(:placeholder-shown):not(:focus) ~ .label {
+        color: map-get($map: theme.$themeColors, $key: 'secondaryText');
+        margin-left: 0 !important;
 
-		white-space: nowrap;
-		text-overflow: ellipsis;
-	}
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 }
 
 @mixin rounded() {
-	&.rounded.size-extra-small {
-		border-radius: globalVariables.$extraSmallRound globalVariables.$extraSmallRound 0 0;
-		.validation-container {
-			border-radius: globalVariables.$extraSmallRound;
-		}
-	}
+    &.rounded.size-extra-small {
+        border-radius: globalVariables.$extraSmallRound globalVariables.$extraSmallRound 0 0;
+        .validation-container {
+            border-radius: globalVariables.$extraSmallRound;
+        }
+    }
 
-	&.rounded.size-small {
-		border-radius: globalVariables.$smallRound globalVariables.$smallRound 0 0;
-		.validation-container {
-			border-radius: globalVariables.$smallRound;
-		}
-	}
+    &.rounded.size-small {
+        border-radius: globalVariables.$smallRound globalVariables.$smallRound 0 0;
+        .validation-container {
+            border-radius: globalVariables.$smallRound;
+        }
+    }
 
-	&.rounded.size-default {
-		border-radius: globalVariables.$defaultRound globalVariables.$defaultRound 0 0;
-		.validation-container {
-			border-radius: globalVariables.$defaultRound;
-		}
-	}
+    &.rounded.size-default {
+        border-radius: globalVariables.$defaultRound globalVariables.$defaultRound 0 0;
+        .validation-container {
+            border-radius: globalVariables.$defaultRound;
+        }
+    }
 
-	&.rounded.size-large {
-		border-radius: globalVariables.$largeRound globalVariables.$largeRound 0 0;
-		.validation-container {
-			border-radius: globalVariables.$largeRound;
-		}
-	}
+    &.rounded.size-large {
+        border-radius: globalVariables.$largeRound globalVariables.$largeRound 0 0;
+        .validation-container {
+            border-radius: globalVariables.$largeRound;
+        }
+    }
 
-	&.rounded.size-extra-large {
-		border-radius: globalVariables.$extraLargeRound globalVariables.$extraLargeRound 0 0;
-		.validation-container {
-			border-radius: globalVariables.$extraLargeRound;
-		}
-	}
+    &.rounded.size-extra-large {
+        border-radius: globalVariables.$extraLargeRound globalVariables.$extraLargeRound 0 0;
+        .validation-container {
+            border-radius: globalVariables.$extraLargeRound;
+        }
+    }
 }
 
 @mixin sizeExtraSmall() {
-	font-size: globalVariables.$extraSmallFontSize;
-	height: #{globalVariables.$extraSmallHeight}px;
+    font-size: globalVariables.$extraSmallFontSize;
+    height: #{globalVariables.$extraSmallHeight}px;
 
-	input {
-		padding: 0 2px;
-	}
+    input {
+        padding: 0 2px;
+    }
 
-	.label {
-		line-height: #{globalVariables.$extraSmallHeight}px;
-		padding: 0 2px;
-	}
+    .label {
+        line-height: #{globalVariables.$extraSmallHeight}px;
+        padding: 0 2px;
+    }
 
-	input:focus ~ .label,
-	input:not(:focus):not(:placeholder-shown) ~ .label {
-		$margin: globalVariables.$extraSmallHeight - 2;
-		margin-top: #{$margin * -1}px;
-		padding: 0;
-	}
+    input:focus ~ .label,
+    input:not(:focus):not(:placeholder-shown) ~ .label {
+        $margin: globalVariables.$extraSmallHeight - 2;
+        margin-top: #{$margin * -1}px;
+        padding: 0;
+    }
 
-	.hint {
-		margin-top: #{globalVariables.$extraSmallHeight + 2}px;
-	}
+    .hint {
+        margin-top: #{globalVariables.$extraSmallHeight + 2}px;
+    }
 
-	.validation-container {
-		padding: 2px 4px;
-	}
+    .validation-container {
+        padding: 2px 4px;
+    }
 }
 
 @mixin sizeSmall() {
-	font-size: globalVariables.$smallFontSize;
-	height: #{globalVariables.$smallHeight}px;
+    font-size: globalVariables.$smallFontSize;
+    height: #{globalVariables.$smallHeight}px;
 
-	input {
-		padding: 0 4px;
-	}
+    input {
+        padding: 0 4px;
+    }
 
-	.label {
-		line-height: #{globalVariables.$smallHeight}px;
-		padding: 0 4px;
-	}
+    .label {
+        line-height: #{globalVariables.$smallHeight}px;
+        padding: 0 4px;
+    }
 
-	input:focus ~ .label,
-	input:not(:focus):not(:placeholder-shown) ~ .label {
-		$margin: globalVariables.$smallHeight - 4;
-		margin-top: #{$margin * -1}px;
-		padding: 0;
-	}
+    input:focus ~ .label,
+    input:not(:focus):not(:placeholder-shown) ~ .label {
+        $margin: globalVariables.$smallHeight - 4;
+        margin-top: #{$margin * -1}px;
+        padding: 0;
+    }
 
-	.hint {
-		margin-top: #{globalVariables.$smallHeight + 2}px;
-	}
+    .hint {
+        margin-top: #{globalVariables.$smallHeight + 2}px;
+    }
 
-	.validation-container {
-		padding: 4px 8px;
-	}
+    .validation-container {
+        padding: 4px 8px;
+    }
 }
 
 @mixin sizeDefault() {
-	font-size: globalVariables.$defaultFontSize;
-	height: #{globalVariables.$defaultHeight}px;
+    font-size: globalVariables.$defaultFontSize;
+    height: #{globalVariables.$defaultHeight}px;
 
-	input {
-		padding: 0 6px;
-	}
+    input {
+        padding: 0 6px;
+    }
 
-	.label {
-		line-height: #{globalVariables.$defaultHeight}px;
-		padding: 0 6px;
-	}
+    .label {
+        line-height: #{globalVariables.$defaultHeight}px;
+        padding: 0 6px;
+    }
 
-	input:focus ~ .label,
-	input:not(:focus):not(:placeholder-shown) ~ .label {
-		$margin: globalVariables.$defaultHeight - 6;
-		margin-top: #{$margin * -1}px;
-		padding: 0;
-	}
+    input:focus ~ .label,
+    input:not(:focus):not(:placeholder-shown) ~ .label {
+        $margin: globalVariables.$defaultHeight - 6;
+        margin-top: #{$margin * -1}px;
+        padding: 0;
+    }
 
-	.hint {
-		margin-top: #{globalVariables.$defaultHeight + 2}px;
-	}
+    .hint {
+        margin-top: #{globalVariables.$defaultHeight + 2}px;
+    }
 
-	.validation-container {
-		padding: 6px 12px;
-	}
+    .validation-container {
+        padding: 6px 12px;
+    }
 }
 
 @mixin sizeLarge() {
-	font-size: globalVariables.$largeFontSize;
-	height: #{globalVariables.$largeHeight}px;
+    font-size: globalVariables.$largeFontSize;
+    height: #{globalVariables.$largeHeight}px;
 
-	input {
-		padding: 0 8px;
-	}
+    input {
+        padding: 0 8px;
+    }
 
-	.label {
-		line-height: #{globalVariables.$largeHeight}px;
-		padding: 0 8px;
-	}
+    .label {
+        line-height: #{globalVariables.$largeHeight}px;
+        padding: 0 8px;
+    }
 
-	input:focus ~ .label,
-	input:not(:focus):not(:placeholder-shown) ~ .label {
-		$margin: globalVariables.$largeHeight - 8;
-		margin-top: #{$margin * -1}px;
-		padding: 0;
-	}
+    input:focus ~ .label,
+    input:not(:focus):not(:placeholder-shown) ~ .label {
+        $margin: globalVariables.$largeHeight - 8;
+        margin-top: #{$margin * -1}px;
+        padding: 0;
+    }
 
-	.hint {
-		margin-top: #{globalVariables.$largeHeight + 2}px;
-	}
+    .hint {
+        margin-top: #{globalVariables.$largeHeight + 2}px;
+    }
 
-	.validation-container {
-		padding: 8px 16px;
-	}
+    .validation-container {
+        padding: 8px 16px;
+    }
 }
 
 @mixin sizeExtraLarge() {
-	font-size: globalVariables.$extraLargeFontSize;
-	height: #{globalVariables.$extraLargeHeight}px;
+    font-size: globalVariables.$extraLargeFontSize;
+    height: #{globalVariables.$extraLargeHeight}px;
 
-	input {
-		padding: 0 10px;
-	}
+    input {
+        padding: 0 10px;
+    }
 
-	.label {
-		line-height: #{globalVariables.$extraLargeHeight}px;
-		padding: 0 10px;
-	}
+    .label {
+        line-height: #{globalVariables.$extraLargeHeight}px;
+        padding: 0 10px;
+    }
 
-	input:focus ~ .label,
-	input:not(:focus):not(:placeholder-shown) ~ .label {
-		$margin: globalVariables.$extraLargeHeight - 10;
-		margin-top: #{$margin * -1}px;
-		padding: 0;
-	}
+    input:focus ~ .label,
+    input:not(:focus):not(:placeholder-shown) ~ .label {
+        $margin: globalVariables.$extraLargeHeight - 10;
+        margin-top: #{$margin * -1}px;
+        padding: 0;
+    }
 
-	.hint {
-		margin-top: #{globalVariables.$extraLargeHeight + 2}px;
-	}
+    .hint {
+        margin-top: #{globalVariables.$extraLargeHeight + 2}px;
+    }
 
-	.validation-container {
-		padding: 10px 20px;
-	}
+    .validation-container {
+        padding: 10px 20px;
+    }
 }
 
 @mixin validation() {
-	.validation-container {
-		font-size: 0.85em;
-		position: absolute;
-		background-color: map-get($map: theme.$alertColors, $key: 'danger') !important;
-		z-index: 2;
-	}
+    .validation-container {
+        font-size: 0.85em;
+        position: absolute;
+        background-color: map-get($map: theme.$alertColors, $key: 'danger') !important;
+        z-index: 2;
+    }
 
-	.validation-errors ul {
-		padding: 0;
-		margin: 0;
-	}
+    .validation-errors ul {
+        padding: 0;
+        margin: 0;
+    }
 
-	.validation-errors ul li {
-		margin: 4px 0;
-		list-style: none;
-	}
+    .validation-errors ul li {
+        margin: 4px 0;
+        list-style: none;
+    }
 
-	.validation-error {
-		white-space: nowrap;
-		color: white;
-	}
+    .validation-error {
+        white-space: nowrap;
+        color: white;
+    }
 
-	.qei-icon-button {
-		color: white;
-	}
+    .qei-icon-button {
+        color: white;
+    }
 }

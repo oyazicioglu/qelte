@@ -75,6 +75,7 @@
             {disabled}
             {rounded}
             {size}
+            {color}
             value={activeItem ? activeItem.text : ''}
             on:focus={() => {
                 showList = true;
