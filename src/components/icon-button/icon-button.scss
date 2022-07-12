@@ -2,76 +2,78 @@
 @use './mixins';
 
 .qei-icon-button {
-	position: relative;
-	.hover {
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		transition: all 300ms ease-in-out;
-		z-index: 1;
-		background-color: transparent;
-	}
+    position: relative;
+    color: inherit;
 
-	&.condense {
-		padding: 2px;
-	}
+    .hover {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        transition: all 300ms ease-in-out;
+        z-index: 1;
+        background-color: transparent;
+    }
 
-	&:not(:disabled).color-inherit {
-		color: inherit !important;
-	}
+    &.condense {
+        padding: 2px;
+    }
 
-	&.circle {
-		border-radius: 50%;
-	}
+    &:not(:disabled).color-inherit {
+        color: inherit !important;
+    }
 
-	&:not(:disabled):hover > .hover {
-		background-color: map-get($map: theme.$themeColors, $key: 'hover');
-	}
+    &.circle {
+        border-radius: 50%;
+    }
 
-	&:not(:disabled):active > .hover {
-		background-color: map-get($map: theme.$themeColors, $key: 'click');
-	}
+    &:not(:disabled):hover > .hover {
+        background-color: map-get($map: theme.$themeColors, $key: 'hover');
+    }
 
-	&.btn-type-basic {
-		@include mixins.basic();
-	}
+    &:not(:disabled):active > .hover {
+        background-color: map-get($map: theme.$themeColors, $key: 'click');
+    }
 
-	&.btn-type-flat {
-		@include mixins.flat();
-	}
+    &.btn-type-basic {
+        @include mixins.basic();
+    }
 
-	&.btn-type-raised {
-		@include mixins.raised();
-	}
+    &.btn-type-flat {
+        @include mixins.flat();
+    }
 
-	&.btn-type-stroked {
-		@include mixins.stroked();
-	}
+    &.btn-type-raised {
+        @include mixins.raised();
+    }
 
-	&:disabled {
-		cursor: default;
-		color: map-get($map: theme.$themeColors, $key: 'disabledText');
-	}
+    &.btn-type-stroked {
+        @include mixins.stroked();
+    }
 
-	&:not(.condense).btn-size-extra-small {
-		@include mixins.elementSize('extra-small');
-	}
+    &:disabled {
+        cursor: default;
+        color: map-get($map: theme.$themeColors, $key: 'disabledText');
+    }
 
-	&:not(.condense).btn-size-small {
-		@include mixins.elementSize('small');
-	}
+    &:not(.condense).btn-size-extra-small {
+        @include mixins.elementSize('extra-small');
+    }
 
-	&:not(.condense).btn-size-default {
-		@include mixins.elementSize('default');
-	}
+    &:not(.condense).btn-size-small {
+        @include mixins.elementSize('small');
+    }
 
-	&:not(.condense).btn-size-large {
-		@include mixins.elementSize('large');
-	}
+    &:not(.condense).btn-size-default {
+        @include mixins.elementSize('default');
+    }
 
-	&:not(.condense).btn-size-extra-large {
-		@include mixins.elementSize('extra-large');
-	}
+    &:not(.condense).btn-size-large {
+        @include mixins.elementSize('large');
+    }
+
+    &:not(.condense).btn-size-extra-large {
+        @include mixins.elementSize('extra-large');
+    }
 }

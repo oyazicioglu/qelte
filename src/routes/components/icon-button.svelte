@@ -13,7 +13,7 @@
     </Flex>
     <Flex gap="10" direction="column">
         <Flex gap="4">
-            <IconButton />
+            <IconButton color="inherit" icon={Notification} />
             <IconButton color="primary" icon={Notification} />
             <IconButton color="accent" icon={Notification} />
             <IconButton color="danger" icon={Notification} />
