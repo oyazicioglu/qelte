@@ -145,7 +145,7 @@
         <div transition:fade class="validation-container" style="position: absolute; right:0; top:{ref.clientHeight + 2}px">
             <Flex direction="column" justifyContent="flex-end">
                 <FlexItem alignSelf="flex-end">
-                    <IconButton on:click={() => (showErrors = false)} icon={Close} size="small" />
+                    <IconButton circle on:click={() => (showErrors = false)} icon={Close} size="small" />
                 </FlexItem>
                 <div class="validation-errors">
                     <ul>

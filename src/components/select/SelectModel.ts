@@ -8,7 +8,7 @@ export interface ISelectItem {
 }
 
 export class SelectModel {
-    private _items: ISelectItem[];
+    private _items: ISelectItem[] = [];
     private _activeItem: ISelectItem;
 
     constructor(items: ISelectItem[] = []) {
@@ -18,7 +18,6 @@ export class SelectModel {
 
     set items(items: ISelectItem[]) {
         this._items = items;
-        console.log(this._items);
     }
 
     get items() {

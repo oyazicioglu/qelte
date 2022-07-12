@@ -14,7 +14,7 @@
     import type { IValidation, IValidationResult } from '../form/validations/IValidation.js';
     import View from 'carbon-icons-svelte/lib/View.svelte';
     import ViewOff from 'carbon-icons-svelte/lib/ViewOff.svelte';
-    import CloseSvelte from 'carbon-icons-svelte/lib/Close.svelte';
+    import Close from 'carbon-icons-svelte/lib/Close.svelte';
 
     export let size: BaseSize = 'default';
     export let rounded = false;
@@ -174,7 +174,7 @@
         <div transition:fade class="validation-container" style="position: absolute; right:0; top:{ref.clientHeight + 2}px">
             <Flex direction="column" justifyContent="flex-end">
                 <FlexItem alignSelf="flex-end">
-                    <IconButton on:click={() => (showErrors = false)} icon={CloseSvelte} size="small" />
+                    <IconButton circle on:click={() => (showErrors = false)} icon={Close} size="small" />
                 </FlexItem>
                 <div class="validation-errors">
                     <ul>

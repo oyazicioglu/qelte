@@ -18,10 +18,10 @@
     let valid: boolean;
 
     const selectModel = new SelectModel([
-        { active: false, id: createUId(), text: 'Item 1', value: 'Item 1 Value', icon: { Home } },
-        { active: false, id: createUId(), text: 'Item 2', value: 'Item 2 Value', icon: { Home } },
-        { active: true, id: createUId(), text: 'Item 3', value: 'Item 3 Value', icon: { Home } },
-        { active: false, id: createUId(), text: 'Item 4', value: 'Item 4 Value', icon: { Home } },
+        { active: false, id: createUId(), text: 'Item 1', value: 'Item 1 Value', icon: Home },
+        { active: false, id: createUId(), text: 'Item 2', value: 'Item 2 Value', icon: Home },
+        { active: true, id: createUId(), text: 'Item 3', value: 'Item 3 Value', icon: Home },
+        { active: false, id: createUId(), text: 'Item 4', value: 'Item 4 Value', icon: Home },
     ]);
 </script>
 

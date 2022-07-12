@@ -1,27 +1,27 @@
 @use './theme/theme';
 
 * {
-	box-sizing: border-box;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 html {
-	min-height: 100vh;
+    min-height: 100vh;
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-		sans-serif;
-	font-size: 14px;
-	line-height: 1;
-	position: relative;
-	box-sizing: border-box;
-	background-color: map-get(theme.$themeColors, 'background');
-	color: map-get(theme.$themeColors, 'primaryText');
-	min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, 'Open Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+        Helvetica Neue, sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    position: relative;
+    box-sizing: border-box;
+    background-color: map-get(theme.$themeColors, 'background');
+    color: map-get(theme.$themeColors, 'primaryText');
+    min-height: 100vh;
 }
 
 p,
@@ -37,48 +37,48 @@ li,
 a,
 a:visited,
 a:active {
-	padding: 0;
-	margin: 0;
-	font-weight: inherit;
-	margin-block: 0;
+    padding: 0;
+    margin: 0;
+    font-weight: inherit;
+    margin-block: 0;
 }
 
 .fullSize {
-	position: absolute;
-	top: 0;
-	left: 0;
-	min-height: 100vh;
-	width: 100vw;
-	margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    width: 100vw;
+    margin: auto;
 }
 
 .fullFit {
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
 }
 
 .fullHeight {
-	height: 100%;
+    height: 100%;
 }
 
 .fullWidth {
-	width: 100%;
+    width: 100%;
 }
 
 .isStrong {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .isInline {
-	display: inline-grid;
-	display: -ms-inline-grid;
-	display: -moz-inline-grid;
+    display: inline-grid;
+    display: -ms-inline-grid;
+    display: -moz-inline-grid;
 }
 
 .hideOverlay {
-	overflow: hidden;
+    overflow: hidden;
 }

@@ -5,7 +5,6 @@
     import TableCell from '../data-table/table-cell.svelte';
     import TableRow from '../data-table/table-row.svelte';
     import TableHeadCell from '../data-table/table-head-cell.svelte';
-    import Container from '../layout/container.svelte';
     import Row from '../layout/row.svelte';
     import Column from '../layout/column.svelte';
     import Preloader from '../preloader/preloader.svelte';

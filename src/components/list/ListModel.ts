@@ -7,7 +7,7 @@ export interface IListItem {
     component?: any;
     text?: string;
     icon?: any;
-    closeOnClick: boolean;
+    closeOnClick?: boolean;
 }
 
 export interface IListModel {

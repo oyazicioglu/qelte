@@ -63,6 +63,10 @@
             return;
         }
 
+        if (!selectModel || !selectModel.items || selectModel.items.length <= 0) {
+            return;
+        }
+
         showList = !showList;
     };
 
