@@ -20,6 +20,7 @@
     import type { ISelectItem, SelectModel } from './SelectModel';
 
     export let size: BaseSize = 'default';
+    export let color: BaseColor = 'default';
     export let rounded = false;
     export let ref: HTMLElement = undefined;
     export let label: string = 'Select';
@@ -32,7 +33,6 @@
     export let alignItems: FlexAlignItem = 'stretch';
     export let justifyContent: FlexJustify = 'flex-start';
     export let direction: FlexDirection = 'column';
-    export let color: BaseColor = 'default';
     export let selectModel: SelectModel;
     export let validationsResult: IValidationResult = undefined;
     export let valid = false;
@@ -131,11 +131,11 @@
     {#if activeItem && label}
         <span class="label">{label}</span>
     {/if}
-    <Button {size} gap="2" {disabled} type="basic" {justifyContent} fullWidth on:click={toggleList}
+    <Button {size} gap="2" {disabled} type="basic" {color} {justifyContent} fullWidth on:click={toggleList}
         >{#if activeItem && activeItem.icon}
-            <Icon icon={activeItem.icon} />
+            <Icon {size} {color} icon={activeItem.icon} />
         {/if}
-        <Span>{activeItem ? activeItem.text : label}</Span>
+        <Span {size} {color} noWrap>{activeItem ? activeItem.text : label}</Span>
     </Button>
     {#if showList}
         <div
