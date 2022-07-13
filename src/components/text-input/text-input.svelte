@@ -13,6 +13,7 @@
     import { ValidationDirective } from '../form/validations/ValidationDirective.js';
     import { FormElement } from '../form/FormElement.js';
     import Close from 'carbon-icons-svelte/lib/Close.svelte';
+    import Span from '../span/span.svelte';
 
     export let size: BaseSize = 'default';
     export let color: BaseColor = 'inherit';
@@ -115,7 +116,7 @@
             <div class="required-dot" />
         {/if}
         {#if preIcon}
-            <Icon style="margin-left:4px" icon={preIcon} {size} c color="secondary" />
+            <Icon style="margin-left:4px" icon={preIcon} {size} {color} />
         {/if}
         <input
             {...$$restProps}
@@ -135,15 +136,15 @@
             {placeholder} />
 
         {#if postIcon}
-            <Icon style="margin-right:4px" icon={postIcon} {size} color="secondary" />
+            <Icon style="margin-right:4px" icon={postIcon} {size} {color} />
         {/if}
 
         {#if label}
-            <span style={`margin-left: ${labelLeftPosition}px;`} class="label">{label}</span>
+            <Span style={`margin-left: ${labelLeftPosition}px;`} class="label">{label}</Span>
         {/if}
 
         {#if hint}
-            <span class="hint">{hint}</span>
+            <Span color="secondary" class="hint">{hint}</Span>
         {/if}
         <slot />
         <div class="bottom-line" />

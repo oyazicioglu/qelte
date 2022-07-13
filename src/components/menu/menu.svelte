@@ -5,17 +5,7 @@
     import Icon from '../icon/icon.svelte';
     import IconButton from '../icon-button/icon-button.svelte';
     import Button from '../button/button.svelte';
-    import type {
-        BaseColor,
-        BaseSize,
-        ButtonType,
-        FlexAlignItem,
-        FlexDirection,
-        FlexGap,
-        FlexJustify,
-        IconSize,
-        MenuPosition,
-    } from '../types.js';
+    import type { BaseColor, BaseSize, ButtonType, FlexAlignItem, FlexDirection, FlexGap, FlexJustify, MenuPosition } from '../types.js';
     import type { IListItem, IListModel } from '../list/ListModel.js';
     import { onMount } from 'svelte';
     import Span from '../span/span.svelte';

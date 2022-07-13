@@ -9,7 +9,6 @@
     export let bold = false;
     export let italic = false;
     export let noWrap = true;
-    export let lineHeight = 1.5;
 
     $: classes = [
         `qei-text`,
@@ -25,7 +24,7 @@
         .filter(Boolean)
         .join(' ');
 
-    $: styles = [`line-height: ${lineHeight}`, $$restProps.style].filter(Boolean).join(';');
+    $: styles = [$$restProps.style].filter(Boolean).join(';');
 </script>
 
 <span bind:this={ref} {...$$restProps} class={classes} style={styles}>
