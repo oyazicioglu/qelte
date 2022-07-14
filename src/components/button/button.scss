@@ -2,100 +2,105 @@
 @use './mixins';
 
 .qei-button {
-	position: relative;
-	overflow: hidden;
+    position: relative;
+    overflow: hidden;
 
-	.hover {
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		transition: all 300ms ease-in-out;
-		z-index: 0;
-		background-color: transparent;
-		display: grid;
-		grid-auto-flow: column;
-		align-items: center;
-		min-width: fit-content;
-	}
+    .hover {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        transition: all 300ms ease-in-out;
+        z-index: 0;
+        background-color: transparent;
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+        min-width: fit-content;
+        cursor: pointer;
+    }
 
-	&.no-wrap {
-		white-space: nowrap;
-		.qei-span {
-			white-space: nowrap;
-		}
-	}
+    &.no-wrap {
+        white-space: nowrap;
+        .qei-span {
+            white-space: nowrap;
+        }
+    }
 
-	&:not(:disabled).color-inherit {
-		color: inherit !important;
-	}
+    &:not(:disabled).color-inherit {
+        color: inherit !important;
+    }
 
-	&.fullWidth {
-		width: 100%;
-	}
+    &.fullWidth {
+        width: 100%;
+    }
 
-	&:not(:disabled):hover > .hover {
-		background-color: map-get($map: theme.$themeColors, $key: 'hover');
-	}
+    &:not(:disabled):hover > .hover {
+        background-color: map-get($map: theme.$themeColors, $key: 'hover');
+    }
 
-	&.type-basic {
-		@include mixins.basic();
-	}
+    &:not(:disabled):active > .hover {
+        background-color: map-get($map: theme.$themeColors, $key: 'click');
+    }
 
-	&.type-flat {
-		@include mixins.flat();
-	}
+    &.type-basic {
+        @include mixins.basic();
+    }
 
-	&.type-stroked {
-		@include mixins.stroked();
-	}
+    &.type-flat {
+        @include mixins.flat();
+    }
 
-	&.type-raised {
-		@include mixins.raised();
-	}
+    &.type-stroked {
+        @include mixins.stroked();
+    }
 
-	&:disabled {
-		cursor: default;
-	}
+    &.type-raised {
+        @include mixins.raised();
+    }
 
-	&.size-extra-small {
-		@include mixins.elementSize('extra-small');
-	}
+    &:disabled {
+        cursor: default;
+    }
 
-	&.size-small {
-		@include mixins.elementSize('small');
-	}
+    &.size-extra-small {
+        @include mixins.elementSize('extra-small');
+    }
 
-	&.size-default {
-		@include mixins.elementSize('default');
-	}
+    &.size-small {
+        @include mixins.elementSize('small');
+    }
 
-	&.size-large {
-		@include mixins.elementSize('large');
-	}
+    &.size-default {
+        @include mixins.elementSize('default');
+    }
 
-	&.size-extra-large {
-		@include mixins.elementSize('extra-large');
-	}
+    &.size-large {
+        @include mixins.elementSize('large');
+    }
 
-	&.rounded.size-extra-small {
-		@include mixins.round('extra-small');
-	}
+    &.size-extra-large {
+        @include mixins.elementSize('extra-large');
+    }
 
-	&.rounded.size-small {
-		@include mixins.round('small');
-	}
+    &.rounded.size-extra-small {
+        @include mixins.round('extra-small');
+    }
 
-	&.rounded.size-default {
-		@include mixins.round('default');
-	}
+    &.rounded.size-small {
+        @include mixins.round('small');
+    }
 
-	&.rounded.size-large {
-		@include mixins.round('large');
-	}
+    &.rounded.size-default {
+        @include mixins.round('default');
+    }
 
-	&.rounded.size-extra-large {
-		@include mixins.round('extra-large');
-	}
+    &.rounded.size-large {
+        @include mixins.round('large');
+    }
+
+    &.rounded.size-extra-large {
+        @include mixins.round('extra-large');
+    }
 }
