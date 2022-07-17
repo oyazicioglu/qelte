@@ -57,6 +57,10 @@
         }
     };
 
+    $: if (label) {
+        placeholder = '';
+    }
+
     $: classes = [
         `qei-text-input`,
         disabled && `disabled`,

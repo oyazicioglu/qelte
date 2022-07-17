@@ -74,6 +74,10 @@
         updateValue();
     };
 
+    $: if (label) {
+        placeholder = '';
+    }
+
     $: classes = [`qei-number-input`, disabled && `disabled`, hasBackground && `has-background`, `size-${size}`, $$restProps.class]
         .filter(Boolean)
         .join(' ');

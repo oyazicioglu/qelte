@@ -76,6 +76,10 @@
         loaded = true;
     });
 
+    $: if (label) {
+        placeholder = '';
+    }
+
     $: if (input) {
         labelLeftPosition = input.offsetLeft;
     }

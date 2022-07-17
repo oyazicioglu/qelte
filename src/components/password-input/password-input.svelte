@@ -57,6 +57,10 @@
         }
     };
 
+    $: if (label) {
+        placeholder = '';
+    }
+
     $: classes = [`qei-password-input`, disabled && `disabled`, hasBackground && `has-background`, `size-${size}`, $$restProps.class]
         .filter(Boolean)
         .join(' ');
