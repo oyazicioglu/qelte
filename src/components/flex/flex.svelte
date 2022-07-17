@@ -10,6 +10,12 @@
     export let ref = undefined;
     export let fullWidth = false;
     export let fullHeight = false;
+    export let fullFit = false;
+
+    $: if (fullFit) {
+        fullWidth = false;
+        fullHeight = false;
+    }
 
     $: classes = [
         `qei-flex`,
@@ -18,6 +24,7 @@
         gap && `has-gap`,
         `flex-gap-${gap}`,
         fullHeight && `fullHeight`,
+        fullFit && `fullFit`,
         $$restProps.class,
     ]
         .filter(Boolean)
