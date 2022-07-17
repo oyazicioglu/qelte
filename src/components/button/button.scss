@@ -44,6 +44,10 @@
         background-color: map-get($map: theme.$themeColors, $key: 'click');
     }
 
+    &:disabled > .hover {
+        cursor: default;
+    }
+
     &.type-basic {
         @include mixins.basic();
     }
