@@ -1,0 +1,29 @@
+@use '../styles/theme/theme';
+
+.qei-hover {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transition: all 300ms ease-in-out;
+    z-index: 999;
+    background-color: transparent;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    min-width: fit-content;
+    cursor: pointer;
+
+    &:not(.disabled):hover {
+        background-color: map-get($map: theme.$themeColors, $key: 'hover');
+    }
+
+    &:not(.disabled):active {
+        background-color: map-get($map: theme.$themeColors, $key: 'click');
+    }
+
+    &.disabled {
+        cursor: default;
+    }
+}

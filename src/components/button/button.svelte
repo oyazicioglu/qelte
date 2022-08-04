@@ -2,6 +2,7 @@
     import Preloader from '../preloader/preloader.svelte';
     import Flex from '../flex/flex.svelte';
     import type { BaseColor, BaseSize, ButtonType, FlexDirection, FlexGap, FlexJustify, TripleColor } from '../types';
+    import Hover from '../hover/hover.svelte';
 
     export let direction: FlexDirection = 'row';
     export let color: BaseColor = 'default';
@@ -52,11 +53,10 @@
     class:rounded
     class:fullWidth
     style={styles}>
-    <div class="hover" />
+    <Hover bind:disabled bind:active />
     {#if waiting && !disabled}
         <Preloader showBackground {color} {size} />
     {/if}
-    <div class="hover" />
     <Flex style="height:100%" wrap={noWrap ? 'nowrap' : 'wrap'} {direction} {gap} {justifyContent} alignItems="center">
         <slot />
     </Flex>
