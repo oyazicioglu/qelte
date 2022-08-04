@@ -1,12 +1,27 @@
+<script lang="ts" context="module">
+    export const listContext = {};
+
+    export interface IListContext {
+        add(item: IListItem): void;
+        count(): number;
+        size: BaseSize;
+        activeItem: Writable<IListItem>;
+    }
+
+    export interface IListItem {
+        element: HTMLElement;
+        active: boolean;
+        id: string;
+    }
+</script>
+
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, setContext } from 'svelte';
     import type { BaseColor, BaseSize, ButtonType, FlexAlignItem, FlexDirection, FlexGap, FlexJustify } from '../types.js';
-    import type { IListItem, IListModel } from './ListModel.js';
     import Paper from '../paper/paper.svelte';
     import Flex from '../flex/flex.svelte';
-    import Button from '../button/button.svelte';
-    import Icon from '../icon/icon.svelte';
-    import Span from '../span/span.svelte';
+    import { writable } from 'svelte/store';
+    import type { Writable } from 'svelte/store';
 
     export let color: BaseColor = 'default';
     export let direction: FlexDirection = 'column';
@@ -21,20 +36,34 @@
     export let paddingVertical: FlexGap = '0';
     export let paddingHorizontal: FlexGap = '0';
     export let hideOverflow = true;
-    export let activeItem: IListItem = undefined;
-    export let listModel: IListModel;
+    export let items: IListItem[] = [];
+
+    const activeItem = writable<IListItem>(undefined);
 
     if (type === 'stroked') {
         type = 'basic';
     }
 
-    const changeItem = (item: IListItem) => {
-        listModel.activeItem = item;
-        activeItem = listModel.activeItem;
+    const add = (item: IListItem) => {
+        if (!item) return;
+        items.push(item);
+        if (item.active) {
+            setActiveItem(item);
+        }
     };
 
+    const setActiveItem = (item: IListItem) => {
+        $activeItem = item;
+    };
+
+    const count = () => {
+        return items.length | 0;
+    };
+
+    setContext<IListContext>(listContext, { add, count, activeItem, size });
+
     onMount(async () => {
-        activeItem = listModel.activeItem;
+        setActiveItem(items.find((i) => i.active === true));
     });
 
     $: classes = [`qei-list`, !disabled && `color-${color}`, `type-${type}`, `size-${size}`, rounded && `rounded`, $$restProps.class]
@@ -52,31 +81,7 @@
         elevation={type === 'raised' ? '3' : '0'}
         class="pl-{paddingHorizontal} pr-{paddingHorizontal} pt-{paddingVertical} pb-{paddingVertical}">
         <Flex wrap="nowrap" {gap} {justifyContent} {alignItems} {direction}>
-            {#each listModel.items as item}
-                {#if item.component}
-                    <svelte:component this={item.component} />
-                {:else}
-                    <Button
-                        on:click={() => {
-                            changeItem(item);
-                        }}
-                        gap="2"
-                        type={type === 'raised' ? 'flat' : type}
-                        {color}
-                        fullWidth
-                        {justifyContent}
-                        active={item === activeItem}>
-                        {#if item.component}
-                            <svelte:component this={item.component} />
-                        {:else}
-                            {#if item.icon}
-                                <Icon icon={item.icon} {size} />
-                            {/if}
-                            <Span>{item.text ? item.text : item.value}</Span>
-                        {/if}
-                    </Button>
-                {/if}
-            {/each}
+            <slot />
         </Flex>
     </Paper>
 </div>

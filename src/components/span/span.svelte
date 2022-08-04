@@ -8,7 +8,7 @@
     export let ref = undefined;
     export let bold = false;
     export let italic = false;
-    export let noWrap = true;
+    export let noWrap = false;
 
     $: classes = [
         `qei-text`,

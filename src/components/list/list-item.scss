@@ -1,0 +1,25 @@
+@use '../styles/theme/variables';
+
+.qei-list-item {
+    position: relative;
+
+    &:not(.divider):not(.no-padding).size-extra-small {
+        padding: variables.$extraSmallPadding;
+    }
+
+    &:not(.divider):not(.no-padding).size-small {
+        padding: variables.$smallPadding;
+    }
+
+    &:not(.divider):not(.no-padding).size-default {
+        padding: variables.$defaultPadding;
+    }
+
+    &:not(.divider):not(.no-padding).size-large {
+        padding: variables.$largePadding;
+    }
+
+    &:not(.divider):not(.no-padding).size-extra-large {
+        padding: variables.$extraLargePadding;
+    }
+}
