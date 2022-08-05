@@ -17,7 +17,6 @@
     import Search from 'carbon-icons-svelte/lib/Search.svelte';
     import Filter from 'carbon-icons-svelte/lib/Filter.svelte';
     import Menu from '../menu/menu.svelte';
-    import { ListModel } from '../list/ListModel.js';
     import Span from '../span/span.svelte';
     import TableContainer from './table-container.svelte';
     import Pagination from '../pagination/pagination.svelte';
@@ -37,10 +36,6 @@
     export let condense = false;
     export let headers: HeaderType[];
     export let rows: RowType[];
-    export let list: ListModel = new ListModel([
-        { text: 'Text1', value: 'Value 1', active: true, id: '1', icon: View, component: Divider },
-        { text: 'Text2', value: 'Value 2', active: true, id: '2', icon: Search },
-    ]);
 
     let waiting = true;
     let searchValue: string = undefined;
@@ -80,7 +75,7 @@
                 {/if}
                 {#if showFilters}
                     <Column grow={0}>
-                        <Menu type="flat" rounded icon={Filter} listModel={list} useIconButton position="bottom-right" />
+                        <Menu type="flat" rounded icon={Filter} useIconButton position="bottom-right" />
                     </Column>
                 {/if}
             </Row>

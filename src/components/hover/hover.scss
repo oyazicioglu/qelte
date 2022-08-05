@@ -26,4 +26,8 @@
     &.disabled {
         cursor: default;
     }
+
+    &:not(.disabled).active {
+        background-color: map-get($map: theme.$themeColors, $key: 'click');
+    }
 }
